@@ -180,6 +180,7 @@ Dikarenakan dari ketiga model tersebut, model LGBM Classifier memiliki tingkat A
 ## Evaluasi
 
 Matriks evaluasi yang digunakan ialah Accuracy dan Cross Validatin Score.
+
 **Accuracy**
 Merupakan rasio prediksi Benar (positif dan negatif) dengan keseluruhan data. 
 
@@ -188,5 +189,12 @@ Merupakan rasio prediksi Benar (positif dan negatif) dengan keseluruhan data.
 
 **Cross Validation**
 Cross validation adalah suatu metode tambahan dari teknik data mining yang bertujuan untuk memperoleh hasil akurasi yang maksimal. Metode ini sering juga disebut dengan k-fold cross validation. Berikut cara kerja Cross Validation.
+
 ![cv](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/croos%20validation.jpg)
 
+Berdasarkan pelatihan dengan model LGBMClassifier. Model dapat memprediksi kemungkinan penumpang apakah selamat atau tidak seperti di bawah ini.
+
+
+![test](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/26.PNG)
+
+Adapun fitur yang mempengaruhi Keselamatan Penumpang ialah Fare atau harga tiker dan Pclass. Dikarenakan kebanyakan yang membeli tiket dengan harga murah akan tidak selamat, dapat disimpulkan bahwa mereka membeli tiket kelas ketiga. Sehingga penumpang dengan tiket kelas pertama leboh memiliki kemungkinan selamat yang lebih besar.
