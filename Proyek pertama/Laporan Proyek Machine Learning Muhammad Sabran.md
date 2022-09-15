@@ -29,6 +29,7 @@ Maka berdasarkan permasalahan di atas, adapun tujuan dari proyek ini yaitu.
 ## Data Understanding
 
 Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh melalui [tautan](https://www.kaggle.com/competitions/titanic) berikut. Adapun penjelasan detail mengenai fitur-fitur yang ada di dataset tersebut yaitu.
+-	PasssengerId : Fitur nomor ID penumpang
 - 	Survived : Fitur yang menandakan apakah penumpang selamat atau tidak (0=tidak, 1= selamat)
 -	Pclass: Fitur untuk mengetahui tingkatan kelas yang dipilih (1 = 1st, 2 = 2nd, 3 = 3rd)
 -	Sex : Fitur jenis kelamin penumpang
@@ -39,8 +40,8 @@ Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh 
 -	Fare : Fitur untuk mengetahui harga tiket penumpang
 -	Cabin : Fitur untuk memberi tahu nomor kabin penumpang.
 -	Embarked :Fitur untuk mengetahui darimana penumpang berangkat (C = Cherbourg, Q = Queenstown, S = Southampton)
--	
 
+Informasi yang diperoleh dari dataset tersebut yaitu di dalam data set tersebut terdapat 891 input, 11 fitur dan 1 label. Untuk kondisi dataset terdapat Missing Values di beberapa kolom sehingga harus mengdrop kolom tersebut serta mengganti nilai yang hilang dengan mean dan modus.
 
 Berikut adalah visualisasi data yang saya gunakan dalam menjelaskan korelasi fitur – fitur terhadap kemungkinan selamat penumpang:
 -	Sebelum masuk ke Univariate analysis, kita perlu melihat NaN values yang dimiliki oleh Titanic dataset
