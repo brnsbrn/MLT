@@ -4,7 +4,8 @@
 
 Titanic merupakan sebuah kapal pesiar mewah dengan panjang 254 meter dan bagian lambungnya dibagi menjadi 16 kompartemen. Hal ini membuat Titanic sangat dielu-elukan pada zamannya sebagai kapal pesiar terbesar dan termewah pada zaman itu. Namun nahas, di tanggal 15 April 1912, Kapal yang membawa 2.200 orang penumpang dan awak tersebut tenggelam di Samudera Atlantik setelah kapal tersebut tidak sengaja menabrak sebuah gunung es.
 
-Dilansir dari situs Kompas melalui [link berikut](https://www.kompas.com/tren/read/2021/04/15/073927465/hari-ini-dalam-sejarah-tenggelamnya-kapal-titanic?page=all), akibat kejadian tersebut 1.500 orang meregang nyawa dan hanya 700 orang yang selamat. Tentunya selain faktor keberuntungan, terdapat faktor lain yang memengaruhi penumpang tersebut bisa selamat. Oleh karena itu, proyek Machine Learning kali ini akan menganalisis faktor apa yang memengaruhi penumpang selamat serta dapat memprediksi penumpang mana yang selamat dan tidak berdasarkan data.
+Dilansir dari situs Kompas melalui [link berikut](https://www.kompas.com/tren/read/2021/04/15/073927465/hari-ini-dalam-sejarah-tenggelamnya-kapal-titanic?page=all), akibat kejadian tersebut 1.500 orang meregang nyawa dan hanya 700 orang yang selamat. Tentunya selain faktor keberuntungan, terdapat faktor lain yang memengaruhi penumpang tersebut bisa selamat. Seperti yang dibahas oleh **Yogesh Kakde** dalam penelitiannya yang berjudul [Predicting Survival on Titanic by Applying Exploratory
+Data Analytics and Machine Learning Techniques](https://www.researchgate.net/profile/Yogesh-Kakde/publication/325228831_Predicting_Survival_on_Titanic_by_Applying_Exploratory_Data_Analytics_and_Machine_Learning_Techniques/links/5c068f63a6fdcc315f9c0bb9/Predicting-Survival-on-Titanic-by-Applying-Exploratory-Data-Analytics-and-Machine-Learning-Techniques.pdf) di mana mungkin saja faktor-faktor seperti umur, jenis kelamin, dan tingkatan kelas dapat memengaruhi peluang selamat atau tidaknya penumpang kapal Titanic.
 
 ## Business Understanding
 
@@ -150,7 +151,7 @@ Model – model yang saya pakai dalam projek ini adalah:
 ![25](https://user-images.githubusercontent.com/113587270/190399574-85c74256-9aa2-46d7-bbb1-4549f70bafe4.PNG)
 
 
-Dikarenakan dari ketiga model tersebut, model LGBM Classifier memiliki tingkat Accuracy dan CV Score yang tinggi dibanding yang lain, maka kita akan menggunakan model LGBM Classifier
+Dikarenakan dari ketiga model tersebut, model _LGBM Classifier_ memiliki tingkat _Accuracy_ dan _CV Score_ yang tinggi dibanding yang lain, maka kita akan menggunakan model _LGBM Classifier_.
 
 
 ## Evaluasi
@@ -173,6 +174,7 @@ Suatu metode tambahan dari teknik _data mining_ yang bertujuan untuk memperoleh 
 ## Kesimpulan
 
 -	Berdasarkan pelatihan dengan model _LGBMClassifier_. Model dapat memprediksi kemungkinan penumpang apakah selamat atau tidak seperti di bawah ini.
+
 	![26](https://user-images.githubusercontent.com/113587270/190408546-a445c804-8a92-4979-a2d7-33587de517f8.PNG)
 
 
@@ -180,4 +182,4 @@ Suatu metode tambahan dari teknik _data mining_ yang bertujuan untuk memperoleh 
 
 ## Referensi
 
-
+[1]	Y. Kakde and S. Agrawal, “Predicting Survival on Titanic by Applying Exploratory Data Analytics and Machine Learning Techniques,” Int. J. Comput. Appl., vol. 179, no. 44, pp. 32–38, 2018, doi: 10.5120/ijca2018917094.
