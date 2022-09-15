@@ -9,6 +9,7 @@ Dilansir dari situs Kompas melalui [link berikut](https://www.kompas.com/tren/re
 ## Business Understanding
 
 Berdasarkan film Titanic yang mengangkat kisah tragis tenggelamnya kapal, para perempuan, lansia, dan anak-anak didahulukan untuk diselamatkan. Hal ini tentunya mempengaruhi faktor keselamatan para penumpang titanic. Yang artinya umur serta gender mempengaruhi keselamatan penumpang. Selain itu juga, digambarkan bahwa penumpang VIP atau yang memiliki tiket First Class lebih diprioritaskan sehingga tentunya akan mempengaruhi faktor keselematan penumpang.
+
 ### Problem Statement:
 Berdasarkan permasalahan di atas, maka permasalahan yang ditemukan yaitu.
 - Apakah faktor yang mempengaruhi tingkat keselamatan penumpang Titanic?
@@ -28,7 +29,9 @@ Maka berdasarkan permasalahan di atas, adapun tujuan dari proyek ini yaitu.
 
 ## Data Understanding
 
-Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh melalui [tautan](https://www.kaggle.com/competitions/titanic) berikut. Adapun penjelasan detail mengenai fitur-fitur yang ada di dataset tersebut yaitu.
+Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh melalui [tautan](https://www.kaggle.com/competitions/titanic) berikut. Informasi yang diperoleh dari dataset tersebut yaitu di dalam data set tersebut terdapat 891 input, 11 fitur dan 1 label. 
+### Penjelasan fitur-fitur
+Adapun penjelasan detail mengenai fitur-fitur yang ada di dataset tersebut yaitu.
 -	PasssengerId : Fitur nomor ID penumpang
 - 	Survived : Fitur yang menandakan apakah penumpang selamat atau tidak (0=tidak, 1= selamat)
 -	Pclass: Fitur untuk mengetahui tingkatan kelas yang dipilih (1 = 1st, 2 = 2nd, 3 = 3rd)
@@ -41,17 +44,19 @@ Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh 
 -	Cabin : Fitur untuk memberi tahu nomor kabin penumpang.
 -	Embarked :Fitur untuk mengetahui darimana penumpang berangkat (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-Informasi yang diperoleh dari dataset tersebut yaitu di dalam data set tersebut terdapat 891 input, 11 fitur dan 1 label. Untuk kondisi dataset terdapat Missing Values di beberapa kolom sehingga harus mengdrop kolom tersebut serta mengganti nilai yang hilang dengan mean dan modus.
+Tampilkan Dataframe yang telah diread dan cek banyak input serta fiturnya
+![satu](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/1.PNG)
 
-Berikut adalah visualisasi data yang saya gunakan dalam menjelaskan korelasi fitur – fitur terhadap kemungkinan selamat penumpang:
--	Sebelum masuk ke Univariate analysis, kita perlu melihat NaN values yang dimiliki oleh Titanic dataset
-Terlihat dari heatmap pada notebook, Cabin memiliki NaN values yang sangat banyak, oleh karena itu saya memilih untuk drop kolom cabin.
--	Univariate analysis
- 
-	Ada 5 barplot yang saya bawakan di notebook. 
--   Barplot Pertama
-   
-![Barplot Pertama](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/1.JPG))
+Tampilkan deskripsi dataset
+![dua](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/2.PNG)
+
+Lalu tampilkan tipe data
+
+![tiga](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/3.PNG)
+
+### EDA Univariate
+
+![tiga](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/4.PNG)
 
 Pada barplot pertama yang ada pada notebook, kita dapat menyimpulkan bahwa lebih banyak penumpang yang meninggal.
 
