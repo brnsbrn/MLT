@@ -73,6 +73,32 @@ Berdasarkan grafik tersebut, mayoritas penumpang berada di kelas tiga
 
 Berdasarkan grafik di atas, mayoritas penumpang berjenis kelamin laki-laki
 
+
+
+![tujuh](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/7.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang tidak membawa saudara atau pasangannya
+
+
+![delapan](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/8.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang tidak membawa orangtua atau anaknya
+
+
+![9](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/9.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang berangkat dari pelabuhan Southampton
+
+
+![10](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/10.png)
+
+Berdasarkan grafik diatas, mayoritas usia penumpang berada di rentang 18-33 tahun
+
+
+![11](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/11.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang membeli tiket dengan harga yang murah
+
 -	Multivariate Analysis
  
 ![Heatmap](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/6.JPG))
