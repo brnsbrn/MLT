@@ -154,9 +154,24 @@ Lakukan Train Data Split untuk membagi dataset
 
 Model – model yang saya pakai dalam projek ini adalah:
 1.	**Logistic Regression**
-    Logistic Regression adalah sebuah algoritma klasifikasi di mana algoritma ini mencari hubungan antar fitur diskrit/kontinu dengan probabilitias hasi loutput diskrit tertentu.
-2.	**XGBClassifier**
-   Merupakan salah satu dari gradient boosting algorithm yang sangat efisien dan fleksibel. XGBClassifier juga memiliki parallel tree boosting. Gradient Boosting algorithm pada dasarnya optimal karena kesalahan diminimalkan dengan menggunakan algoritma penurunan gradien(Berbeda dengan loss function pada umumnya). XGBClassifier ini digunakan untuk masalah klasifikasi.
+    Regresi logistik (kadang disebut model logistik atau model logit), dalam statistika digunakan untuk prediksi probabilitas kejadian suatu peristiwa dengan mencocokkan data pada fungsi logit kurva logistik.
+    Berikut pembuatan modelnya.
+    
+    ![23](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/23.PNG)
+
+    
+2.	**Random Forest**
+   Random Forest adalah algoritma dalam machine learning yang digunakan untuk pengklasifikasian data set dalam jumlah besar. Karena fungsinya bisa digunakan untuk banyak dimensi dengan berbagai skala dan performa yang tinggi. Klasifikasi ini dilakukan melalui penggabungan tree dalam decision tree dengan cara training dataset yang Anda miliki. Berikut pembuatan modelnya.
+   
+   ![24](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/24.PNG)
+   
+   
+   
+3.	**LightGBM Classifier**
+   LightGBM adalah algoritma berbasis histogram yang menempatkan nilai kontinu ke dalam tong diskrit, yang mengarah pada pelatihan yang lebih cepat dan penggunaan memori yang lebih efisien. Pada bagian ini, kita akan menjelajahi LightGBM secara mendalam.
+   
+   
+   ![25](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/25.PNG)
 
 
 Berikut adalah tabel evaluasi dari keempat model:
