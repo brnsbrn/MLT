@@ -116,6 +116,13 @@ Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat berasal dari k
 
 Berdasarkan grafik diatas, mayoritas penumpang yang selamat maupun tidak selamat berangkat dari pelabuhan Southampton. Artinya mayoritas penumpang berangkat dari pelabuhan tersebut.
 
+**Korelasi Matriks**
+
+
+![16](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/16.PNG)
+
+Berdasarkan korelasi di atas, yang mempengaruhi label Survived ialah fitur Fare dan Pclass.
+
 
 ## Data Preparation
 
