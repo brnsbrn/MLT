@@ -44,111 +44,92 @@ Adapun penjelasan detail mengenai fitur-fitur yang ada di dataset tersebut yaitu
 -	Cabin : Fitur untuk memberi tahu nomor kabin penumpang.
 -	Embarked :Fitur untuk mengetahui darimana penumpang berangkat (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-Tampilkan Dataframe yang telah diread dan cek banyak input serta fiturnya
-![satu](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/1.PNG)
-
-Tampilkan deskripsi dataset
-![dua](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/2.PNG)
-
-Lalu tampilkan tipe data
-
-![tiga](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/3.PNG)
-
 ### EDA Univariate
 
-![empat](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/4.png)
+
+![4](https://user-images.githubusercontent.com/113587270/190392570-93d79a34-0431-471e-bfea-8be95ca67548.png)
 
 Berdasarkan grafik di atas mayoritas penumpang kapal Titanic tidak selamat
 
 
 
 
-![lima](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/5.png)
+
+![5](https://user-images.githubusercontent.com/113587270/190392609-88f90cd8-fecf-490b-afe9-37ab79e6c628.png)
 
 Berdasarkan grafik tersebut, mayoritas penumpang berada di kelas tiga
 
 
 
-![enam](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/6.png)
+
+![6](https://user-images.githubusercontent.com/113587270/190392640-3075d0d3-5bfc-4f00-a8fb-475b4dfeed32.png)
 
 Berdasarkan grafik di atas, mayoritas penumpang berjenis kelamin laki-laki
 
 
 
-![tujuh](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/7.png)
+![tujuh](https://user-images.githubusercontent.com/113587270/190392650-f6e6e2cd-f9a4-4080-8db4-9224f03db8ea.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang tidak membawa saudara atau pasangannya
 
 
-![delapan](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/8.png)
+
+![8](https://user-images.githubusercontent.com/113587270/190392744-234090af-dbfc-415c-90dc-d2ec5ae63ed9.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang tidak membawa orangtua atau anaknya
 
 
-![9](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/9.png)
+
+![9](https://user-images.githubusercontent.com/113587270/190392772-f415ad22-f999-48a3-9ab9-89ee5b4db3ad.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang berangkat dari pelabuhan Southampton
 
 
-![10](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/10.png)
+![10](https://user-images.githubusercontent.com/113587270/190392804-8c4413c0-e578-48ab-9db4-9aecb61c0dd0.png)
 
 Berdasarkan grafik diatas, mayoritas usia penumpang berada di rentang 18-33 tahun
 
 
-![11](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/11.png)
+
+![11](https://user-images.githubusercontent.com/113587270/190392838-9bcb0a9c-a5a4-4e0e-b977-d03f52097b1d.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang membeli tiket dengan harga yang murah
 
 
 ### EDA Multivariate
 
-![12](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/12.png)
+
+![12](https://user-images.githubusercontent.com/113587270/190392929-51b206d3-af84-4dd8-98db-98f8c57e0470.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat ialah laki-laki, sedangkan mayoritas yang selamat ialah perempuan
 
 
-![13](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/13.png)
+
+![13](https://user-images.githubusercontent.com/113587270/190392946-3723044b-1509-429b-b8e9-64b64455e140.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat berasal dari kelas ketiga sedangkan yang selamat berasal dari kelas pertama
 
 
-![14](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/14.png)
+
+![14](https://user-images.githubusercontent.com/113587270/190393469-f7902fef-9add-49f2-8cc5-967097f16aa7.png)
 
 Berdasarkan grafik diatas, mayoritas penumpang yang selamat maupun tidak selamat berangkat dari pelabuhan Southampton. Artinya mayoritas penumpang berangkat dari pelabuhan tersebut.
 
 **Korelasi Matriks**
 
 
-![16](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/16.PNG)
+
+![16](https://user-images.githubusercontent.com/113587270/190393539-9caf0021-e9a4-4134-a89f-72c0ba4c8170.PNG)
 
 Berdasarkan korelasi di atas, yang mempengaruhi label Survived ialah fitur Fare dan Pclass.
 
 
 ## Data Preparation
 
-Langkah pertama yang saya lakukan ialah menggabungkan dataframe Training dan Test
+-	Langkah pertama yang saya lakukan ialah menggabungkan dataframe Training dan Test kemudian lakukan pengecekan apakah terdapat data yang hilang pada dataframe tersebut. Karena kolom Cabin terdapat banyak nilai yang hilang, maka kolom Cabin akan dihapus. Selanjutnya, karena kolom Age dan Fare merupakan numerikal, maka isi data yang hilang dengan nilai mean dari kolom tersebut. Sedangkan karena Embarked merupakan kategorikal, maka data yang hilang diisi dengan modus dari kolom tersebut.
+-	Kemudian lakukan **_Encoding_** untuk fitur kategorikal yaitu Sex dan Embarked. Untuk kolom Sex,  0 mewakili wanita dan 1 mewakili pria. Sedangkan untuk kolom Embarked, 0 mewakili C, 1 mewakili G, dan 2 mewakili S.
+-	Kemudian lakukan **_Train_Data_Split_** atau membagi dataset menjadi data train dan data test. Disini saya membagi ukuran data train menjadi 75% dan data test menjadi 25%.
 
-![17](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/17.PNG)
-
-Lalu cek apakah terdapat missing values
-
-![18](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/18.PNG)
-
-Lakukan langkah untuk mengatasi missing values
-
-![19](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/19.PNG)
-
-Lakukan Log Transformation untuk Uniform Data Distribution
-
-![20](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/20.PNG)
-
-Lakukan Encoding pada fitur kategorikal
-
-![21](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/21.PNG)
-
-Lakukan Train Data Split untuk membagi dataset
-
-![22](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/22.PNG)
 
 ## Modeling
 
@@ -157,21 +138,19 @@ Model – model yang saya pakai dalam projek ini adalah:
     Regresi logistik (kadang disebut model logistik atau model logit), dalam statistika digunakan untuk prediksi probabilitas kejadian suatu peristiwa dengan mencocokkan data pada fungsi logit kurva logistik.
     Berikut pembuatan modelnya.
     
-    ![23](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/23.PNG)
+    ![23](https://user-images.githubusercontent.com/113587270/190399360-1e9e430f-f1b0-44fa-a379-3f72fd9a087b.PNG)
 
     
 2.	**Random Forest**
    Random Forest adalah algoritma dalam machine learning yang digunakan untuk pengklasifikasian data set dalam jumlah besar. Karena fungsinya bisa digunakan untuk banyak dimensi dengan berbagai skala dan performa yang tinggi. Klasifikasi ini dilakukan melalui penggabungan tree dalam decision tree dengan cara training dataset yang Anda miliki. Berikut pembuatan modelnya.
    
-   ![24](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/24.PNG)
-   
-   
+   ![24](https://user-images.githubusercontent.com/113587270/190399407-919c5844-8601-4817-ab2a-1c833c83f159.PNG)
+
    
 3.	**LightGBM Classifier**
    LightGBM adalah algoritma berbasis histogram yang menempatkan nilai kontinu ke dalam tong diskrit, yang mengarah pada pelatihan yang lebih cepat dan penggunaan memori yang lebih efisien. Pada bagian ini, kita akan menjelajahi LightGBM secara mendalam.
    
-   
-   ![25](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/25.PNG)
+   ![25](https://user-images.githubusercontent.com/113587270/190399574-85c74256-9aa2-46d7-bbb1-4549f70bafe4.PNG)
 
 
 Dikarenakan dari ketiga model tersebut, model LGBM Classifier memiliki tingkat Accuracy dan CV Score yang tinggi dibanding yang lain, maka kita akan menggunakan model LGBM Classifier
