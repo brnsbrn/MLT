@@ -174,32 +174,19 @@ Model – model yang saya pakai dalam projek ini adalah:
    ![25](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/25.PNG)
 
 
-Berikut adalah tabel evaluasi dari keempat model:
+Dikarenakan dari ketiga model tersebut, model LGBM Classifier memiliki tingkat Accuracy dan CV Score yang tinggi dibanding yang lain, maka kita akan menggunakan model LGBM Classifier
 
-![Evaluasi](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/14.JPG))
 
-Berikut XGBRegressor memiliki Accuracy, Precision, Recall, dan F1 Score terbaik dari 3 model lainnya, membuatnya menjadi model terbaik dari keempat model yang saya pakai.
 ## Evaluasi
 
-Sebelum ke metrik evaluasi, terlebih dahulu kita harus mengerti tentang confusion matrix.
- 
-Di dalam confusion matrix, terdapat 4 kesimpulan yang dapat kita ambil:
--	True Positive (TP): Jumlah prediksi positif yang benar terhadap jumlah positif yang sebenarnya.
--	False Positive (FP): Jumlah prediksi positif yang salah.
--	True Negative (TN): Jumlah prediksi negatif yang benar terhadap jumlah negatif yang sebenarnya.
--	False Negative (FN): Jumlah prediksi negatif yang salah.
+Matriks evaluasi yang digunakan ialah Accuracy dan Cross Validatin Score.
+**Accuracy**
+Merupakan rasio prediksi Benar (positif dan negatif) dengan keseluruhan data. 
 
-Saya menggunakan 4 metrik evaluasi dalam projek ini. 4 metrik evaluasi tersebut adalah:
--	**Accuracy**: Ratio dari True Positives dan True Negative terhadap seluruh positif dan negative di seluruh observasi.
-	Rumus Accuracy Score = (TP + TN)/ (TP + FN + TN + FP) 
--	**Precision**: Kemampuan model untuk memprediksi nilai positif terhadap seluruh jumlah positif yang diprediksi oleh model.
-	Rumus Precision Score = TP / (FP + TP)
--	**Recall**: Kemampuan model untuk memprediksi nilai positif terhadap seluruh jumlah positif yang sesungguhnya.
-	Rumus Recall Score = TP / (FN + TP)
--	**F1**: Metrik yang menimbang kemampuan model untuk memberikan Precision dan Recall.
-	Rumus F1 Score = 2* Precision Score * Recall Score/ (Precision Score + Recall Score/)
+![acc](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/WhatsApp%20Image%202022-09-15%20at%2018.47.24.jpeg)
 
-Berikut adalah tabel evaluasi dari keempat model:
 
-![Evaluasi](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/14.JPG))
- 
+**Cross Validation**
+Cross validation adalah suatu metode tambahan dari teknik data mining yang bertujuan untuk memperoleh hasil akurasi yang maksimal. Metode ini sering juga disebut dengan k-fold cross validation. Berikut cara kerja Cross Validation.
+![cv](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/croos%20validation.jpg)
+
