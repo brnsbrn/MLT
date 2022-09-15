@@ -99,11 +99,23 @@ Berdasarkan grafik diatas, mayoritas usia penumpang berada di rentang 18-33 tahu
 
 Berdasarkan grafik diatas, mayoritas penumpang membeli tiket dengan harga yang murah
 
--	Multivariate Analysis
- 
-![Heatmap](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/6.JPG))
 
-Dari heatmap pada notebook, kita dapat melihat beberapa fitur yang tidak berkorelasi seperti fitur ‘Parch’ bahkan berkorelasi negative seperti fitur ‘Pclass’ (-0.24). Oleh karena itu kedua fitur tersebut saya drop.
+### EDA Multivariate
+
+![12](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/12.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat ialah laki-laki, sedangkan mayoritas yang selamat ialah perempuan
+
+
+![13](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/13.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat berasal dari kelas ketiga sedangkan yang selamat berasal dari kelas pertama
+
+
+![14](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/14.png)
+
+Berdasarkan grafik diatas, mayoritas penumpang yang selamat maupun tidak selamat berangkat dari pelabuhan Southampton. Artinya mayoritas penumpang berangkat dari pelabuhan tersebut.
+
 
 ## Data Preparation
 
