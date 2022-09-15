@@ -56,33 +56,22 @@ Lalu tampilkan tipe data
 
 ### EDA Univariate
 
-![tiga](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/4.PNG)
+![empat](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/4.png)
 
-Pada barplot pertama yang ada pada notebook, kita dapat menyimpulkan bahwa lebih banyak penumpang yang meninggal.
+Berdasarkan grafik di atas mayoritas penumpang kapal Titanic tidak selamat
 
--  Barplot Kedua
 
-![Barplot kedua](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/2.JPG))
 
-Kita juga dapat menyimpulkan bahwa lebih banyak penumpang membeli tiket kelas ketiga, sehingga kita dapat berasumsi bahwa banyak penumpang yang tidak kaya atau tiket dengan kelas kedua dan pertama sudah habis pada barplot kedua.
 
--  Barplot Ketiga
-  
-![Barplot Ketiga](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/3.JPG))
+![lima](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/5.png)
 
-Pada barplot ketiga, kita dapat menyimpulkan bahwa lebih banyak penumpang berjenis kelamin laki – laki.
-- Barplot Keempat
- 
-![Barplot Keempat](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/4.JPG))
+Berdasarkan grafik tersebut, mayoritas penumpang berada di kelas tiga
 
-Kita pula dapat menyimpulkan bahwa banyak sekali nomor tiket yang dimiliki oleh penumpang – penumpang Titanic, oleh karena itu saya memilih untuk drop kolom Ticket pada saat training nanti pada barplot keempat.
 
--  Barplot Kelima
-  
-![Barplot Kelima](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/5.JPG))
 
-Dan terakhir, kita dapat menyimpulkan bahwa penumpang paling banyak berasal dari kota Southampton diikuti dengan kota Cherbourg dan kota Queenstown.
+![enam](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/6.png)
 
+Berdasarkan grafik di atas, mayoritas penumpang berjenis kelamin laki-laki
 
 -	Multivariate Analysis
  
