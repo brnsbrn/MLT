@@ -126,14 +126,29 @@ Berdasarkan korelasi di atas, yang mempengaruhi label Survived ialah fitur Fare 
 
 ## Data Preparation
 
-Dalam data preparation saya melakukan 3 hal sebelum memasukkan data ke model latih:
+Langkah pertama yang saya lakukan ialah menggabungkan dataframe Training dan Test
 
--	Encoding Fitur Kategori
-	Encoding Fitur Kategori dilaksanakan di beberapa fitur bertipe objek, yaitu sex dan embark. Hal ini dilakukan karena model machine learning hanya dapat menerima data dalam bentuk numerik. Saya melaksanakan encoding fitur kategori dengan menggunakan fitur get_dummies.
--	Train-Test-Split
-	Membagi dataset menjadi data latih dan data validasi adalah hal yang harus kita lakukan sebelum melatih model. Hal ini dilakukan supaya kita dapat melakukan validasi dengan benar tanpa bias dari model.
--	Standarisasi
-	Algoritma machine learning akan lebih baik dan lebih optimal apabila dilatih pada model yang memiliki data dengan skala relative yang sama. Scaling ini dilaksanakan untuk membantu model machine learning yang akan dipakai lebih mudah diolah. Saya melaksanakan standarisasi pada kolom Age, Sibsp, dan Fare dengan StandardScaler sebagai fitur standarisasi.
+![17](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/17.PNG)
+
+Lalu cek apakah terdapat missing values
+
+![18](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/18.PNG)
+
+Lakukan langkah untuk mengatasi missing values
+
+![19](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/19.PNG)
+
+Lakukan Log Transformation untuk Uniform Data Distribution
+
+![20](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/20.PNG)
+
+Lakukan Encoding pada fitur kategorikal
+
+![21](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/21.PNG)
+
+Lakukan Train Data Split untuk membagi dataset
+
+![22](https://github.com/brnsbrn/MLT/blob/main/Proyek%20pertama/Ss/22.PNG)
 
 ## Modeling
 
