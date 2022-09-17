@@ -2,30 +2,25 @@
 
 ## Domain Proyek
 
-Titanic merupakan sebuah kapal pesiar mewah dengan panjang 254 meter dan bagian lambungnya dibagi menjadi 16 kompartemen. Hal ini membuat Titanic sangat dielu-elukan pada zamannya sebagai kapal pesiar terbesar dan termewah pada zaman itu. Namun nahas, di tanggal 15 April 1912, Kapal yang membawa 2.200 orang penumpang dan awak tersebut tenggelam di Samudera Atlantik setelah kapal tersebut tidak sengaja menabrak sebuah gunung es.
-
-Dilansir dari situs Kompas melalui [link berikut](https://www.kompas.com/tren/read/2021/04/15/073927465/hari-ini-dalam-sejarah-tenggelamnya-kapal-titanic?page=all), akibat kejadian tersebut 1.500 orang meregang nyawa dan hanya 700 orang yang selamat. Tentunya selain faktor keberuntungan, terdapat faktor lain yang memengaruhi penumpang tersebut bisa selamat. Seperti yang dibahas oleh **Yogesh Kakde** dalam penelitiannya yang berjudul [Predicting Survival on Titanic by Applying Exploratory Data Analytics and Machine Learning Techniques](https://www.researchgate.net/profile/Yogesh-Kakde/publication/325228831_Predicting_Survival_on_Titanic_by_Applying_Exploratory_Data_Analytics_and_Machine_Learning_Techniques/links/5c068f63a6fdcc315f9c0bb9/Predicting-Survival-on-Titanic-by-Applying-Exploratory-Data-Analytics-and-Machine-Learning-Techniques.pdf) [1], di mana mungkin saja faktor-faktor seperti umur, jenis kelamin, dan tingkatan kelas dapat memengaruhi peluang selamat atau tidaknya penumpang kapal Titanic.
-
+Banyak orang takut untuk pergi berobat ke rumah sakit. Entah dengan alasan sakit yang masih belum parah atau biaya yang mahal untuk berobat. Seperti dilansir oleh CNBC [Mahalnya Biaya Berobat, Dari Jatuh Sakit Bisa Jatuh Bangkrut](https://www.cnbcindonesia.com/lifestyle/20180429164515-33-12936/mahalnya-biaya-berobat-dari-jatuh-sakit-bisa-jatuh-bangkrut). Bahkan hal pertama yang mereka pikirkan ketika sakit bukan tentang sembuh atau tidaknya, tapi mengenai biaya yang harus dikeluarkan. Untuk itu diperlukan penelitian untuk memprediksi biaya berobat di rumah sakit seperti yang dilakukan oleh **Mohamad Arif Muharam** [Prediksi Biaya Medis](https://www.bisa.ai/portofolio/detail/Mzgw). Proyek kali ini bertujuan untuk memprediksi nilai medical cost dari yang dikeluarkan seseorang untuk berobat ke rumah sakit.  
 ## Business Understanding
 
-Berdasarkan film Titanic yang mengangkat kisah tragis tenggelamnya kapal, para perempuan, lansia, dan anak-anak didahulukan untuk diselamatkan. Hal ini tentunya mempengaruhi faktor keselamatan para penumpang titanic. Yang artinya umur serta jenis kelamin memengaruhi keselamatan penumpang. Selain itu juga, digambarkan bahwa penumpang _VIP_ atau yang memiliki tiket kelas pertama lebih diprioritaskan sehingga tentunya akan memengaruhi faktor keselamatan penumpang.
-
+Biasanya ketika orang sakit, selama sakitnya belum parah, ia akan terus mengabaikan dan meremehkan sakitnya. Namun, ketika sakitnya sudah bertambah parah dan sangat berbahaya, barulah ia mau untuk pergi berobat ke rumah sakit. Sayangnya, ketika sakitnya sudah parah dan kronis tentunya membutuhkan biaya yang besar untuk mengobatinya. Andaikan dari awal ketika sakitnya masih belum parah dia sudah pergi berobat, pastinya biaya yang dikeluarkan tidak terlalu besar. Untuk itu dengan adanya sistem prediksi biaya perobatan ini dapat mengurangi kekhawatiran pasien untuk pergi berobat ke rumah sakit.
 ### Problem Statement:
 Berdasarkan permasalahan di atas, maka permasalahan yang ditemukan yaitu.
-- Apakah faktor yang memengaruhi tingkat keselamatan penumpang Titanic?
-- Bagaimana cara memprediksi penumpang Titanic bisa selamat atau tidak?
+- Apakah faktor yang memengaruhi besarnya biaya pengobatan?
+- Bagaimana cara memprediksi biaya pengobatan?
 
 ### Goals:
 Maka berdasarkan permasalahan di atas, adapun tujuan dari proyek ini yaitu.
--   Mengetahui faktor yang mempengaruhi keselamatan penumpang Titanic.
--	Memprediksi Keselamatan penumpang - penumpang yang ada di kapal Titanic.
+-   Mengetahui faktor yang mempengaruhi biaya pengobatan.
+-	Memprediksi besarnya biaya pengobatan.
 
 ### Solution Statements:
 -	Melakukan proses EDA untuk mengetahui korelasi dari setiap fiturnya.
 -	Membuat Model Machine Learning dengan menggunakan beberapa algoritma antara lain:
-	1.	Logistic Regression
+	1.	KNN
 	2.	Random Forest
-	3.	LGBM Classifier
 
 ## Data Understanding
 
@@ -131,45 +126,65 @@ Model – model yang saya pakai dalam projek ini adalah:
 
     
 2.	_**Random Forest**_
-   Adalah algoritma dalam _machine learning_ yang digunakan untuk pengklasifikasian dataset dalam jumlah besar. Karena fungsinya bisa digunakan untuk banyak dimensi dengan berbagai skala dan performa yang tinggi. Klasifikasi ini dilakukan melalui penggabungan tree dalam decision tree dengan cara training dataset yang Anda miliki. Nantinya ia akan menggabungkan beberapa decision tree. Nantinya random forest akan mencari fitur terbaik secara acak, fitur terbaik inilah yang akan berperan penting dalam meprBerikut pembuatan modelnya.
-   ![image](https://user-images.githubusercontent.com/113587270/190842430-45c2cffc-f859-46e8-a5f9-61491c16de88.png)
-Di sini saya menggunakan parameter n estimator sebanyak 100 yang artinya ia akan membuat sebanyak 100 cabang pohon,
-
+   Adalah algoritma dalam _machine learning_ yang digunakan untuk pengklasifikasian dataset dalam jumlah besar. Karena fungsinya bisa digunakan untuk banyak dimensi dengan berbagai skala dan performa yang tinggi. Klasifikasi ini dilakukan melalui penggabungan tree dalam decision tree dengan cara training dataset yang Anda miliki. Nantinya ia akan menggabungkan beberapa decision tree. Nantinya random forest akan mencari fitur terbaik secara acak, fitur terbaik inilah yang akan berperan penting dalam hasil prediksi modelnya. Kelebihan algoritma ini yaitu mampu mengatasi data non linear, sedangkan kekurangannya yaitu membutuhkan waktu yang lama pada saat di training.
    
-3.	_**LightGBM Classifier**_
-   Adalah algoritma berbasis histogram yang menempatkan nilai kontinu ke dalam tong diskrit, yang mengarah pada pelatihan yang lebih cepat dan penggunaan memori yang lebih efisien. Kurang lebih mirip dengan _Random Forest_, namun bedanya LGBM lebih berfokus menumbuhkan _Leaf_ pada _Decision Tree_ yang ia buat. Berikut modelnya.
-![25](https://user-images.githubusercontent.com/113587270/190399574-85c74256-9aa2-46d7-bbb1-4549f70bafe4.PNG)
+    ![image](https://user-images.githubusercontent.com/113587270/190842430-45c2cffc-f859-46e8-a5f9-61491c16de88.png)
+   
+    Di sini saya menggunakan parameter n estimator sebanyak 100 yang artinya ia akan membuat sebanyak 100 cabang pohon, dengan kedalaman maksimal pohon sebanyak 16.
 
+  
+Untuk memilih mana model yang digunakan dari kedua model di atas, saya menggunakan MSE untuk menentukan mana model yang memiliki error lebih kecil.
 
-Dikarenakan dari ketiga model tersebut, model _LGBM Classifier_ memiliki tingkat _Accuracy_ dan _CV Score_ yang tinggi dibanding yang lain, maka kita akan menggunakan model _LGBM Classifier_.
+![image](https://user-images.githubusercontent.com/113587270/190842958-d600e915-dc97-462b-b293-b85f1e66f779.png)
 
+Karena MSE Random Forest lebih rendah dibandingkan KNN, maka kita akan menggunakan model Random Forest.
 
 ## Evaluasi
 
-Matriks evaluasi yang digunakan ialah Accuracy dan Cross Validatin Score.
+Matriks evaluasi yang saya gunakan ialah MSE (Mean Squared Error) dan R2 Square
 
-_**Accuracy**_
-Merupakan rasio prediksi benar (positif dan negatif) dengan keseluruhan data. 
+_**MSE**_
+MSE akan menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut.
+
+![image](https://user-images.githubusercontent.com/113587270/190843220-1f0e50d9-2c33-47eb-a43b-3c03e6cb97c6.png)
+
+Untuk hasil evaluasi menggunakan matriks MSE, didapat bahwa Random Forest memiliki MSE yang lebih kecil dibanding KNN.
+
+![image](https://user-images.githubusercontent.com/113587270/190842958-d600e915-dc97-462b-b293-b85f1e66f779.png)
+
+![image](https://user-images.githubusercontent.com/113587270/190843458-664ae97f-da2c-4fcc-aa4c-e5f99baa6f38.png)
 
 
-![WhatsApp Image 2022-09-15 at 18 47 24](https://user-images.githubusercontent.com/113587270/190408220-313dea42-f9de-4e0b-bf7e-10d9b1f3ab89.jpeg)
 
 
-_**Cross Validation**_
-Suatu metode tambahan dari teknik _data mining_ yang bertujuan untuk memperoleh hasil akurasi yang maksimal. Metode ini sering juga disebut dengan _k-fold cross validation_. Berikut cara kerja _Cross Validation_.
+_**R2 Square**_
+Nilai R-squared (R2) digunakan untuk menilai seberapa besar pengaruh variabel laten independen tertentu terhadap variabel laten dependen. Terdapat tiga kategori pengelompokan pada nilai R square yaitu kategori kuat, kategori moderat, dan kategori lemah [2].
 
-![croos validation](https://user-images.githubusercontent.com/113587270/190408315-2b4f4840-b486-48da-ba41-ebca4a70dcdd.jpg)
+![image](https://user-images.githubusercontent.com/113587270/190843383-96d94ca4-a0ea-437b-ade5-af2f9396264d.png)
+
+Nilai R2 Square dari Random Forest lebih besar dibandingkan dari KNN, maka Random Forest lebih efektif dalam memprediksi nilai.
+
+![image](https://user-images.githubusercontent.com/113587270/190843508-5a7a8a10-0f23-4a0b-a703-883caade8334.png)
+
+
+Dengan prediksi seperti berikut.
+
+![image](https://user-images.githubusercontent.com/113587270/190843580-66a1bfcd-fb92-4cae-8f53-41d49f8f4c5a.png)
+
+Dapat dilihat bahwa prediksi dari Random Forest kebanyakan lebih mendeketai dengan nilai y.
+
 
 
 ## Kesimpulan
 
--	Berdasarkan pelatihan dengan model _LGBMClassifier_. Model dapat memprediksi kemungkinan penumpang apakah selamat atau tidak seperti di bawah ini.
+-	Dapat membuat prediksi mengenai biaya pengobatan rumah sakit dengan prediksi sebagai berikut.
 
-	![26](https://user-images.githubusercontent.com/113587270/190408546-a445c804-8a92-4979-a2d7-33587de517f8.PNG)
+	![image](https://user-images.githubusercontent.com/113587270/190843580-66a1bfcd-fb92-4cae-8f53-41d49f8f4c5a.png)
 
 
--	Adapun fitur yang mempengaruhi keselamatan penumpang ialah _Fare_ atau harga tiket dan _Pclass_. Dikarenakan kebanyakan yang membeli tiket dengan harga murah akan tidak selamat, dapat disimpulkan bahwa mereka membeli tiket kelas ketiga. Sehingga penumpang dengan tiket kelas pertama lebih memiliki kemungkinan selamat yang lebih besar.
+-	Berdasarkan korelasi matriks, fitur smoker yang sangat mempengaruhi besar atau tidaknya charges.
 
 ## Referensi
 
 [1]	Y. Kakde and S. Agrawal, “Predicting Survival on Titanic by Applying Exploratory Data Analytics and Machine Learning Techniques,” Int. J. Comput. Appl., vol. 179, no. 44, pp. 32–38, 2018, doi: 10.5120/ijca2018917094.
+[2]	Hair, Jr., Joseph F., et. al. (2011). Multivariate Data Analysis. Fifth Edition. New Jersey: PrenticeHall, Inc.
