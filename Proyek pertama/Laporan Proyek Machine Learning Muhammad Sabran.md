@@ -29,120 +29,111 @@ Maka berdasarkan permasalahan di atas, adapun tujuan dari proyek ini yaitu.
 
 ## Data Understanding
 
-Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh melalui [tautan](https://www.kaggle.com/competitions/titanic) berikut. Informasi yang diperoleh dari dataset tersebut yaitu di dalam data set tersebut terdapat 891 input, 11 fitur dan 1 label. 
-### Penjelasan fitur-fitur
+Adapun dataset yang digunakan diperoleh melalui situs kaggle yang dapat diunduh melalui [tautan](https://www.kaggle.com/datasets/mirichoi0218/insurance). Dataset ini memiliki 1339 data dan 7 fitur. Fitur yang terdiri dari fitur numerikal (age, bmi, children, dan charges) serta fitur kategorikal (sex, smoker, dan region).
 Adapun penjelasan detail mengenai fitur-fitur yang ada di dataset tersebut yaitu.
--	PasssengerId : Fitur nomor ID penumpang
-- 	Survived : Fitur yang menandakan apakah penumpang selamat atau tidak (0=tidak, 1= selamat)
--	Pclass: Fitur untuk mengetahui tingkatan kelas yang dipilih (1 = 1st, 2 = 2nd, 3 = 3rd)
--	Sex : Fitur jenis kelamin penumpang
--	Age : Fitur umur penumpang
--	Sibsp : Fitur untuk memberitahu berapa banyak saudara atau pasangan dari penumpang tersebut
--	Parch : Fitur untuk memberitahu berapa banyak orangtua atau anak dari penumpang tersebut
--	Ticket : Fitur untuk mengetahui nomor tiket penumpang
--	Fare : Fitur untuk mengetahui harga tiket penumpang
--	Cabin : Fitur untuk memberi tahu nomor kabin penumpang.
--	Embarked :Fitur untuk mengetahui darimana penumpang berangkat (C = Cherbourg, Q = Queenstown, S = Southampton)
+- age : Umur pasien
+- sex : Jenis kelamin pasien
+- bmi : Body Mass Index (berat badan normal/sehat)
+- children : Jumlah anak yang ditanggung oleh asuransi
+- smoker : Merokok atau tidak
+- region : Tempat asal (northeast, southeast, southwest, northwest)
+- charges : Biaya medis individu (per orang) 
 
 ### EDA Univariate
 
 
-![4](https://user-images.githubusercontent.com/113587270/190392570-93d79a34-0431-471e-bfea-8be95ca67548.png)
-
-Berdasarkan grafik di atas mayoritas penumpang kapal Titanic tidak selamat.
+![download](https://user-images.githubusercontent.com/113587270/190840585-0a68e9d9-03ff-4ca8-80ab-dcfb41e45e02.png)
 
 
-
-
-
-![5](https://user-images.githubusercontent.com/113587270/190392609-88f90cd8-fecf-490b-afe9-37ab79e6c628.png)
-
-Berdasarkan grafik tersebut, mayoritas penumpang berada di kelas tiga.
+Berdasarkan grafik di atas jumlah laki-laki dan perempuan tidak terpaut jauh, meskipun didominasi oleh laki-laki.
 
 
 
-
-![6](https://user-images.githubusercontent.com/113587270/190392640-3075d0d3-5bfc-4f00-a8fb-475b4dfeed32.png)
-
-Berdasarkan grafik di atas, mayoritas penumpang berjenis kelamin laki-laki.
+![image](https://user-images.githubusercontent.com/113587270/190840797-3693aae9-892f-45aa-b01c-e57af08d932d.png)
 
 
-
-![tujuh](https://user-images.githubusercontent.com/113587270/190392650-f6e6e2cd-f9a4-4080-8db4-9224f03db8ea.png)
-
-Berdasarkan grafik diatas, mayoritas penumpang tidak membawa saudara atau pasangannya.
+Berdasarkan grafik di atas, sebesar 79.5% pasien bukan merupakan perokok.
 
 
+![image](https://user-images.githubusercontent.com/113587270/190840840-51cf5bfb-c5dc-49e4-b238-b73b39407cf3.png)
 
-![8](https://user-images.githubusercontent.com/113587270/190392744-234090af-dbfc-415c-90dc-d2ec5ae63ed9.png)
+Berdasarkan grafik di atas, mayoritas pasien berasal dari southeast.
 
-Berdasarkan grafik diatas, mayoritas penumpang tidak membawa orangtua atau anaknya.
-
-
-
-![9](https://user-images.githubusercontent.com/113587270/190392772-f415ad22-f999-48a3-9ab9-89ee5b4db3ad.png)
-
-Berdasarkan grafik diatas, mayoritas penumpang berangkat dari pelabuhan Southampton.
-
-
-![10](https://user-images.githubusercontent.com/113587270/190392804-8c4413c0-e578-48ab-9db4-9aecb61c0dd0.png)
-
-Berdasarkan grafik diatas, mayoritas usia penumpang berada di rentang 18-33 tahun.
-
-
-
-![11](https://user-images.githubusercontent.com/113587270/190392838-9bcb0a9c-a5a4-4e0e-b977-d03f52097b1d.png)
-
-Berdasarkan grafik diatas, mayoritas penumpang membeli tiket dengan harga yang murah.
 
 
 ### EDA Multivariate
 
+![image](https://user-images.githubusercontent.com/113587270/190840953-4d3fee47-0380-4065-9757-9eb94220f11b.png)
 
-![12](https://user-images.githubusercontent.com/113587270/190392929-51b206d3-af84-4dd8-98db-98f8c57e0470.png)
+![image](https://user-images.githubusercontent.com/113587270/190840960-217d6ef1-6d61-4a53-b6fd-e5fd06ace887.png)
 
-Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat ialah laki-laki, sedangkan mayoritas yang selamat ialah perempuan.
+![image](https://user-images.githubusercontent.com/113587270/190840910-7ca87982-5635-4afb-af2b-c153dd64dd49.png)
 
-
-
-![13](https://user-images.githubusercontent.com/113587270/190392946-3723044b-1509-429b-b8e9-64b64455e140.png)
-
-Berdasarkan grafik diatas, mayoritas penumpang yang tidak selamat berasal dari kelas ketiga sedangkan yang selamat berasal dari kelas pertama.
-
-
-
-![14](https://user-images.githubusercontent.com/113587270/190393469-f7902fef-9add-49f2-8cc5-967097f16aa7.png)
-
-Berdasarkan grafik diatas, mayoritas penumpang yang selamat maupun tidak selamat berangkat dari pelabuhan Southampton. Artinya mayoritas penumpang berangkat dari pelabuhan tersebut.
+Berdasarkan ketiga grafik di atas, dapat disimpulkan bahwa yang sangat menentukan besarnya charges ialah status merokok atau tidak. Di mana apabila status pasien adalah seorang perokok, maka biaya pengobatannya akan lebih besar diandingkan dengan pasien yang tidak merokok.
 
 **Korelasi Matriks**
 
 
+![image](https://user-images.githubusercontent.com/113587270/190841074-9dc3e922-ab7a-4834-a2dc-d054c3ebb5f8.png)
 
-![16](https://user-images.githubusercontent.com/113587270/190393539-9caf0021-e9a4-4134-a89f-72c0ba4c8170.PNG)
-
-Berdasarkan korelasi di atas, yang mempengaruhi label Survived ialah fitur Fare dan Pclass.
+Berdasarkan matriks di atas, fitur numerikal memiliki korelasi yang rendah terhadap charges. Maka kemungkinan fitur yang berkorelasi kuat ada di fitur kategorikal.
 
 
 ## Data Preparation
 
--	Langkah pertama yang saya lakukan ialah menggabungkan _dataframe Training_ dan _Test_ kemudian lakukan pengecekan apakah terdapat data yang hilang pada _dataframe_ tersebut. Karena kolom _Cabin_ terdapat banyak nilai yang hilang, maka kolom _Cabin_ akan dihapus. Selanjutnya, karena kolom _Age_ dan _Fare _merupakan numerikal, maka isi data yang hilang dengan nilai mean dari kolom tersebut. Sedangkan karena _Embarked_ merupakan kategorikal, maka data yang hilang diisi dengan modus dari kolom tersebut.
--	Kemudian lakukan **_Encoding_** untuk fitur kategorikal yaitu _Sex_ dan _Embarked_. Untuk kolom _Sex_,  0 mewakili wanita dan 1 mewakili pria. Sedangkan untuk kolom _Embarked_, 0 mewakili C, 1 mewakili G, dan 2 mewakili S.
--	Kemudian lakukan **_Train_Data_Split_** atau membagi dataset menjadi _data train_ dan _data test_. Disini saya membagi ukuran _data train_ menjadi 75% dan_ data test_ menjadi 25%.
+### Melakukan Encoding
+Langkah pertama yaitu melakukan one-hot-encoding pada fitur kategorikal (sex, smoker, dan region) menggunakan get_dummies.
+
+![image](https://user-images.githubusercontent.com/113587270/190841224-6de0a419-812a-4513-b3ba-980f8190450c.png)
+
+Selanjutnya buat kembali korelasi matriks seluruh fitur yang ada.
+
+![image](https://user-images.githubusercontent.com/113587270/190841288-1606ef3c-2db4-43cd-8855-39ae0c062203.png)
+
+Maka didapatkan fitur yang berkorelasi kuat terhadap charges ialah fitur smoker (yes dan no).
+
+### Melabeli Data
+Yang pertama membuat dataframe X yang menampung variabel independen, caranya cukup dengan drop variabel dependen (charges).
+
+![image](https://user-images.githubusercontent.com/113587270/190841382-ab2d2c03-58ce-46fb-b5c1-14619baa1539.png)
+
+Selanjutnya buat dataframe y untuk menampung variabel dependen (charges)
+
+![image](https://user-images.githubusercontent.com/113587270/190841406-677d74e1-b613-456a-bf9f-1a7105aaf715.png)
+
+### Train-Test-Split
+Selanjutnya membagi data sampel menjadi data train dan data test, dengan porsi 85% data train dan 15% data tes.
+
+![image](https://user-images.githubusercontent.com/113587270/190841552-0196cf84-804c-4f00-bcbf-aa8c680868c2.png)
+
+![image](https://user-images.githubusercontent.com/113587270/190841575-c2343b26-f8ac-4098-8ffc-f9ad4bef0ece.png)
+
+### Standarisasi
+Selanjutnya melakukan standarisasi menggunakan StandardScaler dengan mengurangkan mean (nilai rata-rata) kemudian membaginya dengan standar deviasi untuk menggeser distribusi. Sehingga nilai standar deviasi sama dengan 1 dan mean sama dengan 0. 
+
+![image](https://user-images.githubusercontent.com/113587270/190841698-6f137525-a6a4-40a1-8b50-124d100effe7.png)
+
+![image](https://user-images.githubusercontent.com/113587270/190841834-55150fa6-9631-4d1c-a9df-94fdd16f5e4e.png)
+
+
+
 
 
 ## Modeling
 
 Model – model yang saya pakai dalam projek ini adalah:
-1.	_**Logistic Regression**_
-    Dalam statistika digunakan untuk prediksi probabilitas kejadian suatu peristiwa dengan mencocokkan data pada fungsi logit kurva logistik. Nantinya dengan algoritma _Logistic Regression_, akan memprediksi Y (selamat atau tidak) berdasarkan X (beberapa fitur numerikal) pada _data test_. Kemudian model akan dilatih menggunakan data train untuk meningkatkan akurasinya. Berikut pembuatan modelnya.
+1.	_**KNN**_
+    merupakan algoritma yang berfungsi untuk melakukan klasifikasi suatu data berdasarkan data pembelajaran (train data sets), yang diambil dari k tetangga terdekatnya (nearest neighbors). Kelebihan dari algoritma ini yaitu mudah diimplementasi untuk menjadi sebuah model, namun kekurangannya model ini kurang efektif untuk data dalam jumlah besar.
     
-    ![23](https://user-images.githubusercontent.com/113587270/190399360-1e9e430f-f1b0-44fa-a379-3f72fd9a087b.PNG)
+    ![image](https://user-images.githubusercontent.com/113587270/190842113-e5203a0b-6dd5-4516-a112-eeb16274eee5.png)
+   
+    Disini saya menggunakan parameter jumlah tetangga sebanyak 5, artinya ia akan mengambil 5 tetangga dengan jarak terdekat (Menggunakan Euclidean Distance). Selanjutnya dia akan mengambil data mayoritas yang ada di 5 sampel tetangga tersebut untuk dimasukkan menjadi data baru.
 
     
 2.	_**Random Forest**_
-   Adalah algoritma dalam _machine learning_ yang digunakan untuk pengklasifikasian dataset dalam jumlah besar. Karena fungsinya bisa digunakan untuk banyak dimensi dengan berbagai skala dan performa yang tinggi. Klasifikasi ini dilakukan melalui penggabungan tree dalam decision tree dengan cara training dataset yang Anda miliki. Nantinya ia akan menggabungkan beberapa decision tree. Decision tree ini nantinya akan berisi percabangan dalam menganalisa fitur X pada _data train_ dan _data test_, sehingga diakhir nanti ia dapat memprediksi nilai Y (selamat atau tidak). Berikut pembuatan modelnya.
-   ![24](https://user-images.githubusercontent.com/113587270/190399407-919c5844-8601-4817-ab2a-1c833c83f159.PNG)
+   Adalah algoritma dalam _machine learning_ yang digunakan untuk pengklasifikasian dataset dalam jumlah besar. Karena fungsinya bisa digunakan untuk banyak dimensi dengan berbagai skala dan performa yang tinggi. Klasifikasi ini dilakukan melalui penggabungan tree dalam decision tree dengan cara training dataset yang Anda miliki. Nantinya ia akan menggabungkan beberapa decision tree. Nantinya random forest akan mencari fitur terbaik secara acak, fitur terbaik inilah yang akan berperan penting dalam meprBerikut pembuatan modelnya.
+   ![image](https://user-images.githubusercontent.com/113587270/190842430-45c2cffc-f859-46e8-a5f9-61491c16de88.png)
+Di sini saya menggunakan parameter n estimator sebanyak 100 yang artinya ia akan membuat sebanyak 100 cabang pohon,
 
    
 3.	_**LightGBM Classifier**_
