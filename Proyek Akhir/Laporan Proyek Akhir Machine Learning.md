@@ -1,4 +1,4 @@
-# Laporan Membuat Model Sistem Rekomendasi - Farel Arden
+# Sistem Rekomendasi Buku Berdasarkan Buku Yang Telah Dibaca Sebelumnya
 
 ## Project Overview
 Berdasarkan salah satu artikel dari Universitas Hasanuddin [tautan](https://journal.unhas.ac.id/index.php/jupiter/article/view/1672), membaca buku merupakan hal yang penting untuk dilakukan. Orang - orang yang memilih untuk sering membaca buku memiliki wawasan yang luas. Lewat membaca, kita juga dapat mengetahui, mengenal banyak hal yang sebelumnya belum dikenal dan kita pelajari dan pahami lewat membaca buku.
@@ -8,79 +8,52 @@ Melihat pentingnya dampak buku bagi kehidupan kita, kita perlu banyak membaca bu
 Kita akan menyelesaikan masalah ini dengan content filtered based yang berasal dari rating para pengguna dan content filtered based recommendation system yang berasal dari penulis buku yang sama. 
 
 ## Business Understanding
+Tentunya tiap orang akan memiliki selera, kertertarikan, dan kesukaannya masing-masing tak terkecuali dalam membaca buku. Seseorang mungkin saja tertarik dengan genre buku, ataupun penulisnya, serta covernya. Untuk itu dengan adanya sistem rekomendasi buku ini, dapat memudahkan pembaca dalam menemukan rekomendasi buku-buku berdasarkan selera dan kesukaan mereka.
 
 ### Problem Statement
-- Bagaimana cara membuat sistem yang dapat merekomendasikan buku - buku dari buku - buku yang pernah kita baca sebelumnya?
-- Bagaimana cara mendapatkan rekomendasi buku - buku yang memiliki penulis buku yang sama?
+- Bagaimana cara mendapatkan rekomendasi buku berdasarkan penulisnya?
+- Bagaimana cara membuat sistem rekomendasi buku berdasarkan rating tertinggi?
 
 ### Goals
-- Mengetahui cara membuat sistem yang dapat merekomendasikan buku - buku dari buku - buku yang pernah kita baca sebelumnya.
-- Mengetahui cara mendapatkan buku - buku yang ditulis oleh penulis yang sama dengan buku - buku yang pernah kita baca sebelumnya.
+- Mengetahui cara mendapatkan rekomendasi buku berdasarkan penulisnya.
+- Mengetahui cara membuat sistem rekomendasi buku berdasarkan rating tertinggi.
 
 ### Solution Approach
-Dalam melaksanakan proyek ini, saya menggunakan Content Based Filtering dan Collaborative Based Filtering
+Dalam melaksanakan proyek ini, saya menggunakan 2 algoritma Machine Learning yaitu Content Based Filtering dan Collaborative Based Filtering
 
 **Content Based Filtering**
-Content Based Filtering adalah sistem rekomendasi yang merekomendasikan item sesuai dengan item yang disukai oleh pengguna di masa lampau.
+Content Based Filtering adalah sistem rekomendasi yang merekomendasikan item sesuai dengan item yang disukai oleh pengguna di masa lalu.
 
-Content Based mempelajari profil dan perilaku dari pengguna yang kemudian dari informasi tersebut dianalisa dan diproses sehingga menghasilkan sistem rekomendasi yang baik. Semakin banyak informasi yang diberikan ke sistem ini, maka sistem rekomendasi berbasis content based akan memiliki akurasi yang lebih baik.
+Content-based filtering mempelajari profil minat pengguna baru berdasarkan data dari objek yang telah dinilai pengguna. Algoritma ini bekerja dengan menyarankan item serupa yang pernah disukai di masa lalu atau sedang dilihat di masa kini kepada pengguna. Semakin banyak informasi yang diberikan pengguna, semakin baik akurasi sistem rekomendasi.
 
-Ada 2 informasi yang penting dalam sistem rekomendasi berbasis Content Based Filtering:
-- Model preferensi pengguna
-- Riwayat interaksi pengguna 
+Untuk membuat profil pengguna, dua informasi ini penting bagi sistem dengan pendekatan content-based filtering: 
 
-Kelebihan pada Content Based Filtering  dibandingkan dengan Collaborative Filtering:
-Sistem rekomendasi dapat merekomendasikan item - item berdasarkan sejarah dari pengguna yang di mana setiap pengguna memiliki preferensinya masing - masing, sehingga Content Based Filtering dapat memberikan rekomendasi item yang subjektif dan tepat dengan pengguna.
+- Model preferensi pengguna.
+- Riwayat interaksi pengguna dengan sistem rekomendasi. 
 
-Kekurangan pada Content Based Filtering  dibandingkan dengan Collaborative Filtering:
-Sistem rekomendasi tidak dapat merekomendasikan item - item secara objektif, karena sistem rekomendasi Content Based Filtering memiliki bias terhadap riwayat profil dan perilaku pengguna.
+**Collaborative Filtering**
+Collaborative filtering bergantung pada pendapat komunitas pengguna. Ia tidak memerlukan atribut untuk setiap itemnya seperti pada sistem berbasis konten.
+Collaborative filtering dibagi lagi menjadi dua kategori, yaitu: model based (metode berbasis model machine learning) dan memory based (metode berbasis memori). 
 
-Pada Content Based Filtering, saya akan membuat sistem rekomendasi yang berpusat pada penulis buku, sehingga pengguna akan mendapatkan hasil rekomendasi berdasarkan penulis buku yang telah dibaca oleh pengguna.
-
-**Collaborative Based Filtering**
-Collaborative Based Filtering adalah sistem rekomendasi berdasarkan pendapat suatu komunitas.
-Pada Collaborative Based Filtering terdapat 2 kategori:
-* Metode Berbasis Memori:
-  Metode berbasis model merupakan metode di mana kita memprediksi prefresensi pengguna dari database atau sample dari pengguna lainnya. 
-  Pada model berbasis memori terdapat 2 kategori, yaitu user based dan item based.
-* Metode Berbasis Model:
-  Metode berbasis model cukup menarik, karena di metode ini kita mengambil informasi dari kumpulan data yang kemudian diolah untuk menentukan model probabilitas untuk membuat rekomendasi. 
-  Pada model berbasis model terdapat 3 kategori, yaitu Cluster-based Algorithm, Matrix factorization, dan Deep Learning
-
-Kelebihan pada Collaborative Based Filtering bila dibandingkan dengan Content Based Filtering adalah pengguna dapat mengeksplorasi item atau konten di luar preferensi pengguna. Pengguna pun juga dapat mendapat rekomendasi sesuai dengan kecenderungan publik yang dianalisa lewat penilaian pengguna - pengguna lainnya.
-
-Kekurangan pada Collaborative Based Filtering adalah pengguna kurang mendapatkan rekomendasi sesuai preferensi pribadi. Konten - konten yang diberikan oleh sistem rekomendasi lebih banyak berasal dari preferensi publik dan bukan preferensi pribadi.
-
-Pada Collaborative Based Filtering, saya menggunakan penilaian dari pengguna - pengguna untuk mendapatkan rekomendasi buku - buku.
+Pada Content Based Filtering, saya akan membuat sistem rekomendasi berdasarkan penulis dari buku yang telah dibaca sebelumnya. Sedangkan untuk Collaborative Filtering saya akan membuat sistem rekomendasi berdasarkan buku-buku yang mendapatkan rating tinggi dari pengguna
 
 ## Data Understanding
-Dataset untuk proyek ini dapat diunduh pada [tautan](https://www.kaggle.com/arashnic/book-recommendation-dataset)
-Pada dataset kali ini, kita hanya akan menggunakan 2 buah dataframe, 2 dataframe itu adalah:
+Adapun dataset yang saya gunakan dapat dilihat pada [tautan](https://www.kaggle.com/arashnic/book-recommendation-dataset) berikut. Untuk data yang akan digunakan ialah Books.csv dan Ratings.csv. Adapun untuk detail penjelasan tiap fiturnya sebagai berikut.
+
 **Book.csv**:
-- ISBN(String):
-  Kolom ini merupakan ISBN (International Standard Book Number) untuk buku - buku yang terdaftar
-- Book-Title(String):
-  Kolom ini merupakan judul dari buku - buku yang terdaftar
-- Book-Author(String):
-  Kolom ini merupakan penulis dari buku - buku yang terdaftar
-- Year-of-Publication(String):
-  Kolom ini merupakan tahun terbitnya buku - buku yang terdaftar 
-- Publisher(String):
-  Kolom ini merupakan penerbit dari buku - buku yang tedaftar
-- Image-URL-S(String):
-  Kolom ini menrupakan tautan untuk gambar sampul berukuran kecil
-- Image-URL-M(String):
-  Kolom ini menrupakan tautan untuk gambar sampul berukuran sedang
-- Image-ULR-L(String):
-  Kolom ini menrupakan tautan untuk gambar sampul berukuran besar
+- ISBN  : Menunjukkan ISBN (International Standard Book Number) dari buku
+- Book-Title   :   Menunjukkan judul dari buku
+- Book-Author  : Menunjukkan penulis dari buku
+- Year-of-Publication   : Menunjukkan tahun terbit buku
+- Publisher :    Menunjukkan penerbit dari buku
+- Image-URL-S   :  Menunjukkan tautan untuk gambar sampul berukuran kecil
+- Image-URL-M   :  Menunjukkan tautan untuk gambar sampul berukuran sedang
+- Image-ULR-L   :   Menunjukkan tautan untuk gambar sampul berukuran besar
 
 **Ratings.csv**
-- User-ID(String):
-  Kolom ini merupakan ID dari para pengguna 
-- ISBN(String):
-  Kolom ini merupakan ISBN (International Standard Book Number) untuk buku - buku yang terdaftar
-- Book-Rating(int):
-  Kolom ini merupakan penilaian dari pengguna terhadap suatu buku 
+- User-ID: Menunjukkan ID dari pengguna
+- ISBN  : Menunjukkan ISBN (International Standard Book Number) dari buku
+- Book-Rating   : Menunjukkan rating penilaian dari pengguna
 
 Berikut adalah visualisasi data yang berasal dari kedua dataframe tersebut:
 Perlu diketahui pada visualisasi data yang diberikan di bawah ini berasal dari sample data dan bukan berasal dari keseluruhan data yang diberikan, disebabkan oleh besarnya data yang ada.
