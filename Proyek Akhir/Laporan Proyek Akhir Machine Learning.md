@@ -1,4 +1,4 @@
-# Sistem Rekomendasi Buku Berdasarkan Buku Yang Telah Dibaca Sebelumnya
+# Laporan Sistem Rekomendasi Buku Muhammad Sabran
 
 ## Project Overview
 Berdasarkan salah satu artikel dari Universitas Hasanuddin [tautan](https://journal.unhas.ac.id/index.php/jupiter/article/view/1672), membaca buku merupakan hal yang penting untuk dilakukan. Orang - orang yang memilih untuk sering membaca buku memiliki wawasan yang luas. Lewat membaca, kita juga dapat mengetahui, mengenal banyak hal yang sebelumnya belum dikenal dan kita pelajari dan pahami lewat membaca buku.
