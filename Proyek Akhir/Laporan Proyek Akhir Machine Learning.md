@@ -1,11 +1,7 @@
 # Laporan Sistem Rekomendasi Buku Muhammad Sabran
 
 ## Project Overview
-Buku merupakan salah satu benda yang tak bisa lepas dari hidup manusia. Buku sangat memiliki manfaat yang besar bagi kita, salah satunya dapat menambah wawasan serta pengetahuan kita, makanya sarana pembelajaran kita banyak melalui buku. Selain untuk belajar, buku juga dapat berfungsi sebagai sarana hiburan, contohnya seperti novel dan cerpen. Berdasarkan banyaknya tipe buku tadi, tentunya tiap orang memiliki selera dan ketertarikan mereka sendiri terhadap buku yang mereka suka. Untuk itu melalui proyek ini, dibuatlah sistem rekomendasi buku berdasarkan minat buku dari pembaca. Adapun referensi penelitian dengan topik yang sama dapat dilihat melalui link berikut [SISTEM REKOMENDASI: BUKU ONLINE DENGAN METODE COLLABORATIVE FILTERING](https://ejournal.akprind.ac.id/index.php/technoscientia/article/view/612).
-
-Melihat pentingnya dampak buku bagi kehidupan kita, kita perlu banyak membaca buku. Ketika kita membaca buku, kita pasti memiliki ketertarikan kepada satu atau beberapa bidang. Dikarenakan banyaknya buku yang telah dan akan terbit, kita membutuhkan sistem rekomendasi yang akan menyaring buku - buku sesuai dengan selera dan ketertarikan kita. Dengan adanya sistem rekomendasi ini, kita tidak perlu lama - lama dalam mencari buku sesuai ketertarikan kita.
-
-Kita akan menyelesaikan masalah ini dengan content filtered based yang berasal dari rating para pengguna dan content filtered based recommendation system yang berasal dari penulis buku yang sama. 
+Buku merupakan salah satu benda yang tak bisa lepas dari hidup manusia. Buku sangat memiliki manfaat yang besar bagi kita, salah satunya dapat menambah wawasan serta pengetahuan kita, Buku merupakan informasi segala    kebutuhan     yang    diperlukan, dimulai dari iptek, seni budaya, ekonomi, politik,  sosial  dan  pertahanan  keamanan dan   lain-lain.   Upaya   membaca   buku membuka wawasan dunia intelek sehingga  dapat  mengubah  masa  depan serta   mencerdaskan   akal,   pikiran   dan iman [1] . Selain untuk belajar, buku juga dapat berfungsi sebagai sarana hiburan, contohnya seperti novel dan cerpen. Berdasarkan banyaknya tipe buku tadi, tentunya tiap orang memiliki selera dan ketertarikan mereka sendiri terhadap buku yang mereka suka. Untuk itu melalui proyek ini, dibuatlah sistem rekomendasi buku berdasarkan minat buku dari pembaca. 
 
 ## Business Understanding
 Tentunya tiap orang akan memiliki selera, kertertarikan, dan kesukaannya masing-masing tak terkecuali dalam membaca buku. Seseorang mungkin saja tertarik dengan genre buku, ataupun penulisnya, serta covernya. Untuk itu dengan adanya sistem rekomendasi buku ini, dapat memudahkan pembaca dalam menemukan rekomendasi buku-buku berdasarkan selera dan kesukaan mereka.
@@ -64,9 +60,9 @@ Adapun dataset yang saya gunakan dapat dilihat pada [tautan](https://www.kaggle.
 
 Berdasarkan data di atas, Book memiliki 271360 data entri, data yang sangat banyak tentunya. Selain itu pada Book terdapat 8 variabel antara lai ISBN, judul, penulis, tahun terbit, penerbit, link cover kecil, besar, dan sedang.
 
-![image](https://user-images.githubusercontent.com/113587270/190958919-6de23488-835f-4cae-92db-e3dab59773f3.png)
+![image](https://user-images.githubusercontent.com/113587270/190984426-84603566-50e1-4bcd-a4af-3da75294aadc.png)
 
-Terdapat 9553 judul buku dengan tahun terbit yang berbeda, yang paling lama diterbitkan pada tahun 1937 dan terbaru diterbitkan pada tahun 2002
+Terdapat 242135 judul buku dengan tahun terbit yang berbeda serta beberapa nama penulisnya.
 
 **Rating**
 
@@ -76,7 +72,17 @@ Pada dataset Rating, terdapat 1149780 data entri yang tentunya sangat banyak. Se
 
 ![image](https://user-images.githubusercontent.com/113587270/190959877-74fd930b-01b4-4c65-85f3-7c1bdf9c73d0.png)
 
-Dapat dilihat terdapat 679 data dengan UserID yang berbeda dengan Rating dari rentang 1-10.
+Dapat dilihat terdapat 679 data dengan UserID yang berbeda dengan Rating dari rentang 0-10.
+
+**Visualisasi Data**
+
+![image](https://user-images.githubusercontent.com/113587270/190987464-3ce1df0f-ef76-4d1f-a774-4e62e4313837.png)
+
+Bisa dilihat berdasarkan grafik di atas, banyak pengguna yang memberikan rating 0.
+
+![image](https://user-images.githubusercontent.com/113587270/190988052-046bcae4-8826-4ce0-84c1-73c7d7c23530.png)
+
+Berdasarkan grafik di atas, mayoritas buku diterbitkan di tahun 2002.
 
 ## Data Preparation
 Dikarenakan data yang sangat banyak, maka saya akan mengambil beberapa data saja. Pada data Book saya mengambil 10000 row, sedangkan pada data Rating saya mengambil 5000 row.
@@ -85,36 +91,21 @@ Dikarenakan data yang sangat banyak, maka saya akan mengambil beberapa data saja
 
 **Content Based Filtering**
 Pada content Based Filtering, data preparation yang diperlukan ada 4, yaitu:
-- **Drop kolom Na**
+- **Drop kolom Na** dengan menggunakan method dropna() agar tidak ada kolom pada book dan rating yang memiliki nilai Na/Null.
+- **Drop row duplikat** agar tidak ada row yang sama/duplikat sehingga dapat menyebabkan terjadinya tumpang tindih data dan data yang berulang dengan nilai yang sama.
+- **Mengubah Dataframe Book menjadi List**, selanjutnya koversikan beberapa fitur di dataframe book menjadi sebuah list. Disini fitur ISBN, title, author, serta year saya konversi menjadi sebuah list string.
 
-    ![image](https://user-images.githubusercontent.com/113587270/190960871-7c08f312-818b-408a-9c06-5d1add44891c.png)
-    
-    Drop semua kolom yang mengandung Na/Null pada data book dan rating.
-- **Drop row duplikat**
-
-  ![image](https://user-images.githubusercontent.com/113587270/190961457-f5b7c3d6-d40d-4149-ad32-2e675a74aaae.png)
+- **Membuat Dictionary** dengan menambahkan key value untuk memanggil 4 fitur tadi yang telah diubah menjadi list.
   
-  Drop baris yang menduplikasi baris yang lain agar data tidak tumpang tindih dan tidak berulang-ulang.
-
-- **Mengubah Dataframe menjadi List**
-  
-  ![image](https://user-images.githubusercontent.com/113587270/190961801-561a0ee7-97b7-45a0-9e77-c4b4faf7e7ab.png)
-
-  Kita mengubah dataframe book menjadi sebuah list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy.
-  
-- **Membuat Dictionary**
-
-  ![image](https://user-images.githubusercontent.com/113587270/190962440-ca889371-3857-4318-a28b-be244ba4c49f.png)
-  
-  Buat dictionary untuk menentukan key value dari list yang telah kita buat.
 
 **Collaborative Based Filtering**
 - **Melakukan encoding**
-  Lakukan encoding pada kolom user_id dan ISBN agar menjadi berurutan dan dalam bentuk integer
-  
-  ![image](https://user-images.githubusercontent.com/113587270/190962997-18e403f8-7d0b-4e10-91b7-a2b379947345.png)
-  ![image](https://user-images.githubusercontent.com/113587270/190963633-4c73d71b-dbfb-4b5b-b43e-30b57934c54d.png)
+  Lakukan encoding pada kolom user_id dan ISBN agar yang sebelumnya cuma berupa angka userid dan ISBN berupa angka acak, diubah menjadi angka integer yang berurutan. Hasilnya dapat dilihat di bawah ini.
+![image](https://user-images.githubusercontent.com/113587270/190989127-3c0b5c11-de9c-40a4-a754-aaad9ab6dc38.png)
+![image](https://user-images.githubusercontent.com/113587270/190989186-3dcb227e-f2f3-428e-a480-4c79160d5985.png)
 
+
+ 
 - **Mapping**
   
   ![image](https://user-images.githubusercontent.com/113587270/190963970-4e74d9e0-1cc2-4f9c-bafd-b139583c804c.png)
@@ -124,88 +115,71 @@ Pada content Based Filtering, data preparation yang diperlukan ada 4, yaitu:
 - **Cek Data**
   Cek beberapa hal dalam data seperti jumlah user, jumlah resto, dan mengubah nilai rating menjadi float.
   
-  ![image](https://user-images.githubusercontent.com/113587270/190964257-c5b4a316-e81a-4522-bac8-20a9957417e9.png)
-
-
 - **Train-Test-Split**
   Pertama acak terlebih dahulu dataset.
   
   ![image](https://user-images.githubusercontent.com/113587270/190964758-173b0e0a-bba0-4966-ac4f-fa54dbca7c6e.png)
   
   Selanjutnya, bagi data train dan test dengan komposisi 70:30. Namun sebelumnya, kita perlu memetakan (mapping) data user dan buku menjadi satu value terlebih dahulu. 
-  
-  ![image](https://user-images.githubusercontent.com/113587270/190965030-416167ef-6521-4f37-9757-edcdfb9cd3f6.png)
 
-## Modelling
+## Modelling dan Result
 ### Content Based Filtering
-Modelling menggunakan fungsi tfidfvectorizer() dari library sklearn.
+-   Modelling menggunakan fungsi tfidfvectorizer() dari library sklearn. Disini kita akan mengambil beberapa kata penting dari book_author untuk mengidentifikasi sistem rekomendasi berdasarkan penulis yang sama.
 
-![image](https://user-images.githubusercontent.com/113587270/190966464-152487a8-4a20-408a-8860-c93cc0e3faef.png)
+-   Kemudian lakukan fit transformasi dari list book_author tadi ke dalam bentuk matriks. Sehingga tercipta matriks seperti di bawah ini,
+    ![image](https://user-images.githubusercontent.com/113587270/190990430-0fbdc862-52d6-47d6-9c6d-6dc517973e6c.png)
 
-Lakukan fit transformasi dalam bentuk matriks.
+-   Selanjutnya, itung derajat kesamaan (similarity degree) antar buku dengan teknik cosine similarity. Di sini, kita menggunakan fungsi cosine_similarity dari library sklearn sehingga didapat output.
+    ![image](https://user-images.githubusercontent.com/113587270/190990894-da3f700c-17fc-4b9a-b21e-6e559acc7c02.png)
 
-![image](https://user-images.githubusercontent.com/113587270/190967078-9a6cf16e-3b41-49b2-9988-0689814f0409.png)
-
-Untuk menghasilkan vektor tf-idf dalam bentuk matriks, gunakan fungsi todense()
-
-![image](https://user-images.githubusercontent.com/113587270/190967219-ca3695cd-c28b-4058-8b58-c2936315b8a8.png)
-
-Selanjutnya, mari kita lihat matriks tf-idf untuk beberapa buku dan penulis. 
-
-![image](https://user-images.githubusercontent.com/113587270/190968170-2b2ac1d7-94a2-4ce5-b0c9-64b0403078f8.png)
-
-Sayangnya, berdasarkan matriks di atas tidak ada yang saling berkorelasi dikarenakan penulisnya terbatas.
-
-Selanjutnya, itung derajat kesamaan (similarity degree) antar buku dengan teknik cosine similarity. Di sini, kita menggunakan fungsi cosine_similarity dari library sklearn
-
-![image](https://user-images.githubusercontent.com/113587270/190968955-9189e46d-f532-41ad-b04f-7ee44b248a4d.png)
-
-Buat dataframe cosine dengan kolom dan baris merupakan judul buku.
-
-![image](https://user-images.githubusercontent.com/113587270/190969223-c4867395-8ab0-4a46-a092-377be0ace305.png)
-
-Buat fungsi untuk menampilkan 5 rekomendasi teratas.
-
-![image](https://user-images.githubusercontent.com/113587270/190969720-30a17b5e-baaa-4bd1-96a1-3b574cdf9b42.png)
-
-Misal item buku yang sudah dibaca adalah 'The Star Rover', maka hasil rekomendasi berdasarkan buku tersebut adalah.
-
-![image](https://user-images.githubusercontent.com/113587270/190970239-3736c3d9-f391-41bb-8df6-cd3457563639.png)
+-   Kemudian, dengan menggunakan argpartition, saya akan mengambil 5 rekomendasi buku dengan penulis yang sama dengan buku yang telah dibaca sebelumnya.
+-   Saya uji hal tersebut dengan menggunakan judul buku 'The Star Rover' karangan Jack London.
+ 
+    ![image](https://user-images.githubusercontent.com/113587270/190991454-2f54d265-9a29-4747-b97c-2428e3473a67.png)
+    
+-   Hasil rekomendasinya yang diberikan oleh sistem berdasarkan buku di atas yaitu.
+    ![image](https://user-images.githubusercontent.com/113587270/190991877-d5129d5f-7ab8-465c-9d78-8fd7d532bd87.png)
+    
+Berdasarkan hasil rekomendasi, sistem mengambil kata kunci Jack dan London sebagai bahan untuk merekomendasikan kepada user. Dari hasil di atas hanay 3 buku yang memiliki penulis yang sama dengan buku yang telah dibaca user, 2 lainnya masuk ke dalam rekomendasi dikarenakan mengandung kata Jack dan London pada penulisya.
 
 
-![image](https://user-images.githubusercontent.com/113587270/190969973-f8bb3674-16b6-4a9b-8881-a1097f7ff5a0.png)
 
 
 
 ### Collaborative Filtering
-Di sini, saya membuat model dengan class RecommenderNet dengan keras Model class.
+-   Pertama, kita melakukan proses embedding terhadap data user dan buku. Selanjutnya, lakukan operasi perkalian dot product antara embedding user dan buku. Selain itu, kita juga dapat menambahkan bias untuk setiap user dan buku. Skor kecocokan ditetapkan dalam skala [0,1] dengan fungsi aktivasi sigmoid.
 
-![image](https://user-images.githubusercontent.com/113587270/190971528-1a8c43cf-4562-40bd-99a0-3ec0eb94e50f.png)
-
-Lakukan kompilasi model. Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. 
-
-![image](https://user-images.githubusercontent.com/113587270/190972404-26f9c9d0-ee07-492f-8779-3defb982d539.png)
-
-Kemudian latih model, hingga RMSE nya turun.
-
-![image](https://user-images.githubusercontent.com/113587270/190972655-191630ce-8d0a-4ba0-b0a9-ca7d4452e121.png)
-
-Didapat nilai akhir dari RMSE pada data train sebesar 0.2322 dan nilai RMSE pada data test sebesar 0.3484.
+-   Lakukan kompilasi model. Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. Setelah itu lakukan train pada model.
 
 Adapun hasil rekomendasinya sebagai berikut.
-![image](https://user-images.githubusercontent.com/113587270/190973039-636d2df5-1910-47a8-9f50-3480ff66f38c.png)
+
+![image](https://user-images.githubusercontent.com/113587270/190993983-928e0721-a141-4ca8-827b-2f0fce032d95.png)
+
 
 
 
 ## Evaluation
 
 **Content Based Filtering**
-Pada Content Based Filtering, saya menggunakan akurasi sebagai metrik evaluasi.
-Akurasi pada Content Based Filtering didapat dari:
-Jumlah rekomendasi buku yang sesuai dengan penulis / Jumlah buku yang direkomendasikan.
+Pada Content Based Filtering, saya menggunakan metriks Precision.
+Precision Adalah sebuah metrics yang digunakan untuk mengukur berapa jumlah prediksi benar yang telah dibuat.Berikut adalah rumusnya :
+
+![image](https://user-images.githubusercontent.com/113587270/190994341-e57168a8-ff31-4680-89c7-81eaf0d9ed1a.png)
+
+kelebihan:
+-   Sangat baik untuk klasifikasi
+-   Dokumen yang dipilih secara acak dari kumpulan dokumen yang diambil adalah relevan.
+-   Precision bagus untuk kasus di mana kelasnya seimbang
+Kekurangan
+-   Tidak baik untuk data yang Imbalance
+-   Hanya hasil teratas yang dikembalikan oleh sistem
+
 Pada hasil rekomendasi Content Based, dari 5 buku yang direkomendasikan hanya 3 buku yang memiliki penulis yang sesuai dengan buku yang telah dibaca user.
 
-![Accuracy](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/27.JPG)
+Sehingga bisa dihitung presisinya adalah 3/5 = 0.6 (60%)
+
+![image](https://user-images.githubusercontent.com/113587270/190994855-038241ab-c558-43e4-80ce-dcd9b14dfa10.png)
+
 
 Kelebihan metriks akurasi ini yaitu mudah digunakan karena hanya cukup membagi jumlah data rekomendasi yang benar dengan seluruh data rekomendasi, sedangkan untuk kekurangannya karena metriks ini sangat sederhana sehingga tidak dapat digunakan untuk aspek yang lebih kompleks
 
@@ -230,3 +204,6 @@ Berikut hasil nilai RMSE pada Collaborative Filtering.
 
 Bisa dilihat bahwa nilai error baik di data train dan data test mengalami penurunan yang menandakan model yang kita buat cukup bagus.
 
+#   Referensi
+
+[1] M. Irfan, A. Dwi, and F. Hastarita, “SISTEM REKOMENDASI: BUKU ONLINE DENGAN METODE COLLABORATIVE FILTERING,” vol. 7, no. c, pp. 76–84, 2014.
