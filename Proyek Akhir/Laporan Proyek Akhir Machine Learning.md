@@ -40,7 +40,7 @@ Pada Content Based Filtering, saya akan membuat sistem rekomendasi berdasarkan p
 ## Data Understanding
 Adapun dataset yang saya gunakan dapat dilihat pada [tautan](https://www.kaggle.com/arashnic/book-recommendation-dataset) berikut. Untuk data yang akan digunakan ialah Books.csv dan Ratings.csv. Adapun untuk detail penjelasan tiap fiturnya sebagai berikut.
 
-**Book.csv**:
+**Book.csv** merupakan dataset yang menampung detail buku mulai dari judul, cover, penulis dan tahun terbit. Adapun fitur yang ada pada dataset ini yaitu.
 - ISBN  : Menunjukkan ISBN (International Standard Book Number) dari buku
 - Book-Title   :   Menunjukkan judul dari buku
 - Book-Author  : Menunjukkan penulis dari buku
@@ -50,90 +50,106 @@ Adapun dataset yang saya gunakan dapat dilihat pada [tautan](https://www.kaggle.
 - Image-URL-M   :  Menunjukkan tautan untuk gambar sampul berukuran sedang
 - Image-ULR-L   :   Menunjukkan tautan untuk gambar sampul berukuran besar
 
-**Ratings.csv**
+**Ratings.csv** merupakan dataset yang menampung hasil penilaian rating pengguna terhadap buku-buku. Adapun fitur yang ada pada dataset ini yaitu.
 - User-ID: Menunjukkan ID dari pengguna
 - ISBN  : Menunjukkan ISBN (International Standard Book Number) dari buku
 - Book-Rating   : Menunjukkan rating penilaian dari pengguna
 
-Berikut adalah visualisasi data yang berasal dari kedua dataframe tersebut:
-Perlu diketahui pada visualisasi data yang diberikan di bawah ini berasal dari sample data dan bukan berasal dari keseluruhan data yang diberikan, disebabkan oleh besarnya data yang ada.
-**Univariate Data Analysis**
-Pada univariate data analysis, kita akan melihat 2 barplot:
-- Barplot Pertama
-  ![Barplot Pertama](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/15.JPG))
 
-    Pada barplot pertama, saya menganalisa rating yang berasal dari rating dataset. Ternyata banyak pengguna yang memberi penilian 0 pada buku - buku yang mereka telah baca. Penilian 0 dari 10 tetaplah valid, sehingga kita tidak dapat menganggap nilai 0 ini sebagai nilai NaN.
-- Barplot Kedua
-  ![Barplot Kedua](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/17.JPG)) 
-    Pada barplot kedua, saya menganalisa tahun terbitnya buku, Ternyata banyak sekali buku yang terbit pada tahun 2002.
-**Multivariate Data Analysis**
-Pada multivariate data analysis, saya menggunakan pairplot pada rating dataset.
-![pairplot](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/18.JPG))
+### Univariate EDA
+
+**Book**
+
+![image](https://user-images.githubusercontent.com/113587270/190958296-8cf455ee-8064-4357-89e1-a065d3a0b846.png)
+
+Berdasarkan data di atas, Book memiliki 271360 data entri, data yang sangat banyak tentunya. Selain itu pada Book terdapat 8 variabel antara lai ISBN, judul, penulis, tahun terbit, penerbit, link cover kecil, besar, dan sedang.
+
+![image](https://user-images.githubusercontent.com/113587270/190958919-6de23488-835f-4cae-92db-e3dab59773f3.png)
+
+Terdapat 9553 judul buku dengan tahun terbit yang berbeda, yang paling lama diterbitkan pada tahun 1937 dan terbaru diterbitkan pada tahun 2002
+
+**Rating**
+
+![image](https://user-images.githubusercontent.com/113587270/190959306-376f1d60-9167-4091-a56c-ab72f422848b.png)
+
+Pada dataset Rating, terdapat 1149780 data entri yang tentunya sangat banyak. Serta terdapat 3 variabel yaitu UserID (ID dari pengguna), ISBN, dan Book-Rating (Rating yang diberikan pengguna terhadap buku).
+
+![image](https://user-images.githubusercontent.com/113587270/190959877-74fd930b-01b4-4c65-85f3-7c1bdf9c73d0.png)
+
+Dapat dilihat terdapat 679 data dengan UserID yang berbeda dengan Rating dari rentang 1-10.
 
 ## Data Preparation
-Pada proses data preparation, saya hanya melakukan 2 hal sebelum masuk ke content dan collaborative based filtering:
-- **Dropna**
-  Dropna perlu digunakan dalam proses data preparation untuk membuang seluruh row yang memiliki NaN values. Sebuah model tidak dapat melakukan training apabila terdapat nilai NaN pada data latih. 
-- **Drop Duplicates**
-  Drop dulicates digunakan dalam proses data preparation untuk membuang data - data yang terduplikasi. Adanya data yang terduplikasi membuat model berlatih menggunakan data yang  berulang.
+Dikarenakan data yang sangat banyak, maka saya akan mengambil beberapa data saja. Pada data Book saya mengambil 10000 row, sedangkan pada data Rating saya mengambil 5000 row.
+
+![image](https://user-images.githubusercontent.com/113587270/190960371-f562538d-41a1-419d-b858-9df876e77413.png)
 
 **Content Based Filtering**
-Pada content Based Filtering, data preparation yang diperlukan ada 2, yaitu:
-- **Dataframe dari buku menjadi sebuah list**
-  Perubahan dari dataseries menjadi list dipenuhi dengan menggunakan .tolist() method. Proses ini diperlukan karena list ini akan digunakan pada tahap selanjutnya menjadi dictionary baru yg akan menjadi landasan pada sistem rekomendasi
-- **Memasukkan List ke Dictionary**
-  Setelah kita membuat list, kita perlu membuat dictionary yang digunakan untuk memnentukan pasangan key-value pada book_ISBN, book_title, book_author, dan book_year_of_publication. 
+Pada content Based Filtering, data preparation yang diperlukan ada 4, yaitu:
+- **Drop kolom Na**
+
+    ![image](https://user-images.githubusercontent.com/113587270/190960871-7c08f312-818b-408a-9c06-5d1add44891c.png)
+    
+    Drop semua kolom yang mengandung Na/Null pada data book dan rating.
+- **Drop row duplikat**
+
+  ![image](https://user-images.githubusercontent.com/113587270/190961457-f5b7c3d6-d40d-4149-ad32-2e675a74aaae.png)
+  
+  Drop baris yang menduplikasi baris yang lain agar data tidak tumpang tindih dan tidak berulang-ulang.
+
+- **Mengubah Dataframe menjadi List**
+  
+  ![image](https://user-images.githubusercontent.com/113587270/190961801-561a0ee7-97b7-45a0-9e77-c4b4faf7e7ab.png)
+
+  Kita mengubah dataframe book menjadi sebuah list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy.
+  
+- **Membuat Dictionary**
+
+  ![image](https://user-images.githubusercontent.com/113587270/190962440-ca889371-3857-4318-a28b-be244ba4c49f.png)
+  
+  Buat dictionary untuk menentukan key value dari list yang telah kita buat.
 
 **Collaborative Based Filtering**
-Data preparation yang diperlukan pada sistem collaborative based filtering dimulai dengan menyandikan user_id pada rating_dataset dan ISBN pada book_dataset menjadi integer.
+- **Melakukan encoding**
+  Lakukan encoding pada kolom user_id dan ISBN agar menjadi berurutan dan dalam bentuk integer
+  
+  ![image](https://user-images.githubusercontent.com/113587270/190962997-18e403f8-7d0b-4e10-91b7-a2b379947345.png)
+  ![image](https://user-images.githubusercontent.com/113587270/190963633-4c73d71b-dbfb-4b5b-b43e-30b57934c54d.png)
 
-Setelah disandikan, jumlah dari user_id dan ISBN tersebut akan disimpan pada num_users dan num_book.
+- **Mapping**
+  
+  ![image](https://user-images.githubusercontent.com/113587270/190963970-4e74d9e0-1cc2-4f9c-bafd-b139583c804c.png)
 
-- **Pembagian Data Train dan Data Valid**
-  Setelah semua data sudah terkumpul, kita perlu membagi data tersebut menjadi data latih dan data validasi, namun sebelum itu kita perlu menarik sample dari dataset yang sudah ada.
+  Berikutnya, petakan userID dan ISBN ke dataframe yang berkaitan.
+
+- **Cek Data**
+  Cek beberapa hal dalam data seperti jumlah user, jumlah resto, dan mengubah nilai rating menjadi float.
+  
+  ![image](https://user-images.githubusercontent.com/113587270/190964257-c5b4a316-e81a-4522-bac8-20a9957417e9.png)
 
 
-## Modeling
-**Content Based Filtering**
-Pada content Based Filtering, kita akan menggunakan TF-IDF Vectorizer untuk membangun sistem rekomendasi berdasarkan penulis buku.
+- **Train-Test-Split**
+  Pertama acak terlebih dahulu dataset.
+  
+  ![image](https://user-images.githubusercontent.com/113587270/190964758-173b0e0a-bba0-4966-ac4f-fa54dbca7c6e.png)
+  
+  Selanjutnya, bagi data train dan test dengan komposisi 70:30. Namun sebelumnya, kita perlu memetakan (mapping) data user dan buku menjadi satu value terlebih dahulu. 
+  
+  ![image](https://user-images.githubusercontent.com/113587270/190965030-416167ef-6521-4f37-9757-edcdfb9cd3f6.png)
 
-TF-IDF yang merupakan kepanjangan dari Term Frequency-Inverse Document Frequency memiliki fungsi untuk mengukur seberapa pentingnya suatu kata terhadap kata - kata lain dalam dokumen.
-Kita umumnya menghitung skor untuk setiap kata untuk menandakan pentingnya dalam dokumen dan corpus. Metode sering digunakan dalam Information Retrieval dan Text Mining.
+## Modelling
+### Content Based Filtering
+Modelling menggunakan fungsi tfidfvectorizer() dari library sklearn.
 
-![TF-IDF initialization](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/19.JPG))
-Pada code di atas, saya mendefinisikan tf = TfidfVectorizer() dan mendapatkan kata - kata penting dalam kolom book_author yang berasal dari attribut .get_feature_names() dari tf.
+![image](https://user-images.githubusercontent.com/113587270/190966464-152487a8-4a20-408a-8860-c93cc0e3faef.png)
 
-Kemudian dari string yang didapat akan dimasukkan ke dalam matriks. Pada proyek ini, saya menggunakan tfidf_matrix sebagai matriks.
+Lakukan fit transformasi dalam bentuk matriks.
 
-Dalam sistem rekomendasi, kita perlu mencari cara supaya item yang kita rekomendasikan tidak terlalu jauh dari data pusat, oleh karena itu kita butuh derajat kesamaan pada item, dalam proyek ini, buku dengan derajat kesamaan antar buku dengan cosine similarity.
+![image](https://user-images.githubusercontent.com/113587270/190967078-9a6cf16e-3b41-49b2-9988-0689814f0409.png)
 
-Kemudian kita membutuhkan fungsi author_recommendation di mana atribut argpartition berguna untuk mengambil sejumlah nilai k, dalam fungsi ini 5 tertinggi dari tingkat kesamaan yang berasal dari dataframe cosine_sim_df. Jumlah rekomendasi yang akan diberikan nantinya akan ditentukan oleh nilai k pada fungsi author_recommendation.
+Untuk menghasilkan vektor tf-idf dalam bentuk matriks, gunakan fungsi todense()
 
-**book[book.book_title.eq(books_that_have_been_read)]**
+![image](https://user-images.githubusercontent.com/113587270/190967219-ca3695cd-c28b-4058-8b58-c2936315b8a8.png)
 
-Kode di atas dibutuhkan untuk mencari buku yang memiliki kemiripan dengan buku yang sudah kita baca.
-
-**recommendations = author_recommendations(books_that_have_been_read, cosine_sim_df, book[['book_title', 'book_author']])**
-
-Setelah kita menjalankan kode di atas, kita akan mendapatkan 5 buku rekomendasi yang berasal dari penulis yang sama.
-Berikut adalah hasil rekomendasi untuk buku "The Diaries of Adam and Eve":
-
-![recommendedBooks](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/23.JPG))
-
-Terlihat dari buku - buku yang direkomendasikan berasal dari penulis buku yang sama. Buku yang memiliki penulis yang sama memiliki kesamaan konten, gaya penulisan, dan bahasa membuat pembaca nyaman dan tidak perlu beradaptasi dengan perubahan gaya penulisan dan bahasa yang ada.
-
-**Collaborative Based Filtering**
-Model yang akan dipakai dalam Collaborative Based Filtering adalah RecommenderNet.
-Selanjutnya kita melakukan proses compile pada model dengan binary crossentropy sebagai loss function, adam sebagai optimizer, dan RMSE sebagai metrik dari model.
-
-Setelah proses compile sudah selesai, kita akan melatih model dengan batch_size 5 dan 20 epochs.
-
-Untuk mendapatkan rekomendasi, kita perlu menambahkan beberapa kode tambahan, dimulai dengan mengambil user_id secara acak dari rating_dataset. Dari user_id ini kita perlu mengetahui buku - buku apa saja yang pernah dibaca dan yang belum pernah dibaca, sehingga kita hanya dapat merekomendasikan buku - buku yang belum dibaca.
-
-Setelah itu kita akan mendapatkan rekomendasi sesuai dengan user_id yang didapatkan.
-
-Hasil rekomendasi buku untuk user_id = 278221 adalah:
-![recommendedBooks](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/26.JPG))
 
 ## Evaluation
 
@@ -170,4 +186,5 @@ RMSE memiliki nilai yang lebih kecil daripada MSE, dengan adanya nilai kecil ini
 
 RMSE terlebih dahulu kita definisikan pada bagian metrik dalam model, kemudian kita visualisasikan lewat grafik.
 ![Grafik](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/24.JPG))
+
 
