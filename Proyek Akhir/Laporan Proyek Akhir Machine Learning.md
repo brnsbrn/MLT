@@ -130,6 +130,7 @@ Pada content Based Filtering, data preparation yang diperlukan ada 4, yaitu:
     ![image](https://user-images.githubusercontent.com/113587270/190990430-0fbdc862-52d6-47d6-9c6d-6dc517973e6c.png)
 
 -   Selanjutnya, itung derajat kesamaan (similarity degree) antar buku dengan teknik cosine similarity. Di sini, kita menggunakan fungsi cosine_similarity dari library sklearn sehingga didapat output.
+
     ![image](https://user-images.githubusercontent.com/113587270/190990894-da3f700c-17fc-4b9a-b21e-6e559acc7c02.png)
 
 -   Kemudian, dengan menggunakan argpartition, saya akan mengambil 5 rekomendasi buku dengan penulis yang sama dengan buku yang telah dibaca sebelumnya.
@@ -138,6 +139,7 @@ Pada content Based Filtering, data preparation yang diperlukan ada 4, yaitu:
     ![image](https://user-images.githubusercontent.com/113587270/190991454-2f54d265-9a29-4747-b97c-2428e3473a67.png)
     
 -   Hasil rekomendasinya yang diberikan oleh sistem berdasarkan buku di atas yaitu.
+
     ![image](https://user-images.githubusercontent.com/113587270/190991877-d5129d5f-7ab8-465c-9d78-8fd7d532bd87.png)
     
 Berdasarkan hasil rekomendasi, sistem mengambil kata kunci Jack dan London sebagai bahan untuk merekomendasikan kepada user. Dari hasil di atas hanay 3 buku yang memiliki penulis yang sama dengan buku yang telah dibaca user, 2 lainnya masuk ke dalam rekomendasi dikarenakan mengandung kata Jack dan London pada penulisya.
