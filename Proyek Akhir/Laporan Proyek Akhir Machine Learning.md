@@ -1,7 +1,7 @@
 # Laporan Sistem Rekomendasi Buku Muhammad Sabran
 
 ## Project Overview
-Berdasarkan salah satu artikel dari Universitas Hasanuddin [tautan](https://journal.unhas.ac.id/index.php/jupiter/article/view/1672), membaca buku merupakan hal yang penting untuk dilakukan. Orang - orang yang memilih untuk sering membaca buku memiliki wawasan yang luas. Lewat membaca, kita juga dapat mengetahui, mengenal banyak hal yang sebelumnya belum dikenal dan kita pelajari dan pahami lewat membaca buku.
+Buku merupakan salah satu benda yang tak bisa lepas dari hidup manusia. Buku sangat memiliki manfaat yang besar bagi kita, salah satunya dapat menambah wawasan serta pengetahuan kita, makanya sarana pembelajaran kita banyak melalui buku. Selain untuk belajar, buku juga dapat berfungsi sebagai sarana hiburan, contohnya seperti novel dan cerpen. Berdasarkan banyaknya tipe buku tadi, tentunya tiap orang memiliki selera dan ketertarikan mereka sendiri terhadap buku yang mereka suka. Untuk itu melalui proyek ini, dibuatlah sistem rekomendasi buku berdasarkan minat buku dari pembaca. Adapun referensi penelitian dengan topik yang sama dapat dilihat melalui link berikut [SISTEM REKOMENDASI: BUKU ONLINE DENGAN METODE COLLABORATIVE FILTERING](https://ejournal.akprind.ac.id/index.php/technoscientia/article/view/612).
 
 Melihat pentingnya dampak buku bagi kehidupan kita, kita perlu banyak membaca buku. Ketika kita membaca buku, kita pasti memiliki ketertarikan kepada satu atau beberapa bidang. Dikarenakan banyaknya buku yang telah dan akan terbit, kita membutuhkan sistem rekomendasi yang akan menyaring buku - buku sesuai dengan selera dan ketertarikan kita. Dengan adanya sistem rekomendasi ini, kita tidak perlu lama - lama dalam mencari buku sesuai ketertarikan kita.
 
@@ -150,41 +150,83 @@ Untuk menghasilkan vektor tf-idf dalam bentuk matriks, gunakan fungsi todense()
 
 ![image](https://user-images.githubusercontent.com/113587270/190967219-ca3695cd-c28b-4058-8b58-c2936315b8a8.png)
 
+Selanjutnya, mari kita lihat matriks tf-idf untuk beberapa buku dan penulis. 
+
+![image](https://user-images.githubusercontent.com/113587270/190968170-2b2ac1d7-94a2-4ce5-b0c9-64b0403078f8.png)
+
+Sayangnya, berdasarkan matriks di atas tidak ada yang saling berkorelasi dikarenakan penulisnya terbatas.
+
+Selanjutnya, itung derajat kesamaan (similarity degree) antar buku dengan teknik cosine similarity. Di sini, kita menggunakan fungsi cosine_similarity dari library sklearn
+
+![image](https://user-images.githubusercontent.com/113587270/190968955-9189e46d-f532-41ad-b04f-7ee44b248a4d.png)
+
+Buat dataframe cosine dengan kolom dan baris merupakan judul buku.
+
+![image](https://user-images.githubusercontent.com/113587270/190969223-c4867395-8ab0-4a46-a092-377be0ace305.png)
+
+Buat fungsi untuk menampilkan 5 rekomendasi teratas.
+
+![image](https://user-images.githubusercontent.com/113587270/190969720-30a17b5e-baaa-4bd1-96a1-3b574cdf9b42.png)
+
+Misal item buku yang sudah dibaca adalah 'The Star Rover', maka hasil rekomendasi berdasarkan buku tersebut adalah.
+
+![image](https://user-images.githubusercontent.com/113587270/190970239-3736c3d9-f391-41bb-8df6-cd3457563639.png)
+
+
+![image](https://user-images.githubusercontent.com/113587270/190969973-f8bb3674-16b6-4a9b-8881-a1097f7ff5a0.png)
+
+
+
+### Collaborative Filtering
+Di sini, saya membuat model dengan class RecommenderNet dengan keras Model class.
+
+![image](https://user-images.githubusercontent.com/113587270/190971528-1a8c43cf-4562-40bd-99a0-3ec0eb94e50f.png)
+
+Lakukan kompilasi model. Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. 
+
+![image](https://user-images.githubusercontent.com/113587270/190972404-26f9c9d0-ee07-492f-8779-3defb982d539.png)
+
+Kemudian latih model, hingga RMSE nya turun.
+
+![image](https://user-images.githubusercontent.com/113587270/190972655-191630ce-8d0a-4ba0-b0a9-ca7d4452e121.png)
+
+Didapat nilai akhir dari RMSE pada data train sebesar 0.2322 dan nilai RMSE pada data test sebesar 0.3484.
+
+Adapun hasil rekomendasinya sebagai berikut.
+![image](https://user-images.githubusercontent.com/113587270/190973039-636d2df5-1910-47a8-9f50-3480ff66f38c.png)
+
+
 
 ## Evaluation
 
 **Content Based Filtering**
 Pada Content Based Filtering, saya menggunakan akurasi sebagai metrik evaluasi.
-Akurasi pada Content Based Filtering adalah:
-Jumlah buku yang direkomendasikan sesuai dengan penulis buku / Jumlah buku yang direkomendasikan
-
-Dalam mengaplikasi metrik akurasi pada kode adalah dengan membuat variabel books_that_have_been_read_row yang akan mengambil satu row dari buku yang pernah dibaca sebelumnya, dan juga membuat variabel books_that_have_been_read_author adalah penulis buku dari buku yang pernah dibaca sebelumnya.
-
-Saya juga membuat variabel  book_recommendation_authors merupakan sebuah list yang terdiri dari penulis - penulis dari buku - buku yang direkomendasikan oleh sistem.
-Kemudian saya membuat looping yang merupakan proses manual di mana setiap penulis dari buku yang direkomendasikan akan dicek, apabila sama, maka variabel real_author akan bertambah 1.
-
-Kemudian di bawah ini adalah hasil dari akurasi dari model sistem rekomendasi, di mana jumlah buku yang direkomendasikan sesuai dengan penulis buku (Variabel real_author) / Jumlah buku yang direkomendasikan (5).
+Akurasi pada Content Based Filtering didapat dari:
+Jumlah rekomendasi buku yang sesuai dengan penulis / Jumlah buku yang direkomendasikan.
+Pada hasil rekomendasi Content Based, dari 5 buku yang direkomendasikan hanya 3 buku yang memiliki penulis yang sesuai dengan buku yang telah dibaca user.
 
 ![Accuracy](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/27.JPG)
 
-Kelebihan pada evaluasi metrik akurasi terletak pada kesederhanaannya untuk dipahami, karena metrik akurasi hanyalah jumlah yang benar dibandingkan dengan keseluruhan jawaban.
-
-Sedangkan kekurangan pada evaluasi metrik adalah terletak pada kesederhanannya pula, karena metrik akurasi hanya menghitung jumlah yang benar dibandingkan dengan keseluruhan jawaban dan tidak memperhitungkan aspek lainnya.
+Kelebihan metriks akurasi ini yaitu mudah digunakan karena hanya cukup membagi jumlah data rekomendasi yang benar dengan seluruh data rekomendasi, sedangkan untuk kekurangannya karena metriks ini sangat sederhana sehingga tidak dapat digunakan untuk aspek yang lebih kompleks
 
 **Collaborative Based Filtering**
-Pada Collaborative Based Filtering, kita memiliki evaluasi metrik RMSE atau root-mean-square error.RMSE adalah ukuran yang sering digunakan untuk perbedaan antara nilai (nilai sampel atau populasi) yang diprediksi oleh model atau penduga dan nilai yang diamati.Berbeda dengan MSE, RMSE adalah hasil dari akar MSE membuat RMSE memiliki nilai yang lebih kecil dibandingkan dengan MSE.
+Pada Collaborative Based Filtering, metriks yang saya gunakan adalah RMSE. Root Mean Square Error (RMSE) adalah  metode pengukuran dengan mengukur perbedaan nilai dari prediksi sebuah model sebagai estimasi atas nilai yang diobservasi. Root Mean Square Error adalah hasil dari akar kuadrat Mean Square Error. Keakuratan metode estimasi kesalahan pengukuran ditandai dengan adanya nilai RMSE yang kecil. Metode estimasi yang mempunyai Root Mean Square Error (RMSE) lebih kecil dikatakan lebih akurat daripada metode estimasi yang mempunyai Root Mean Square Error (RMSE) lebih besar.
 
 Berikut adalah rumus RMSE:
-![RMSE](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/22.JPG)
-Dimana,
+
+![image](https://user-images.githubusercontent.com/113587270/190975143-1962abd6-0ce8-4948-a334-4f8257dcbd2d.png)
+
+Keterangan:
 At = Nilai data Aktual
 Ft = Nilai hasil peramalan
 N= banyaknya data
 ∑ = Summation (Jumlahkan keseluruhan  nilai)
 
-RMSE memiliki nilai yang lebih kecil daripada MSE, dengan adanya nilai kecil ini dapat menjadi kelebihan dan kekurangan tersendiri. Kelebihan dari nilai kecil adalah kita tidak perlu takut karena nilai error nya kecil dan kita dapat langsung masuk ke tahap selanjutnya, namun dengan nilai error yang kecil, kita dapat menjadi terlalu percaya diri dengan modelnya tanpa melihat posibilitas overfitting atau undefitting.
+Kelebihan RMSE ialah memiliki nilai eror yang lebih kecil dibandingkan dengan MSE yang membuat model memiliki akurasi yang lebih baik, namun kekurangannya sering menyebabkan model mengalami overfitting atau underfitting.
 
-RMSE terlebih dahulu kita definisikan pada bagian metrik dalam model, kemudian kita visualisasikan lewat grafik.
-![Grafik](https://raw.githubusercontent.com/farelarden/Dicoding-SIB/main/24.JPG))
+Berikut hasil nilai RMSE pada Collaborative Filtering.
 
+![image](https://user-images.githubusercontent.com/113587270/190972655-191630ce-8d0a-4ba0-b0a9-ca7d4452e121.png)
+
+Bisa dilihat bahwa nilai error baik di data train dan data test mengalami penurunan yang menandakan model yang kita buat cukup bagus.
 
